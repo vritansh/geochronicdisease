@@ -1,6 +1,5 @@
 # Proposal
 
 ## Research topic
-
+The research topic is on the healthcare data 
 ## Data availability
-

@@ -1,6 +1,6 @@
 --- 
-title: "YOUR TITLE HERE"
-author: "YOUR NAMES HERE"
+title: "Analysis of geospatial data for the spread of chronic diseases E"
+author: "Ritvik Khandelwal, Vritansh Kamal, Maria Pratyusha"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
