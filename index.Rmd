@@ -1,5 +1,5 @@
 --- 
-title: "Analysis of geospatial data for the spread of chronic diseases E"
+title: "Geospatial Analysis of Chronic Diseases"
 author: "Ritvik Khandelwal, Vritansh Kamal, Maria Pratyusha"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
