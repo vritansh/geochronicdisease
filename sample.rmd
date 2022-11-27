@@ -1,0 +1,67 @@
+```{r}
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(choroplethr)
+library(tidyverse)
+```
+
+```{r}
+data = read.csv('/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv')
+```
+
+```{r}
+#Get only useful columns, Drop the ones not required
+data <-dplyr::select(data, -c('StratificationCategoryID2', 'StratificationCategoryID3','StratificationID2','StratificationID3', 'StratificationCategory2','Stratification2','StratificationCategory3','Stratification3','Response'))
+
+```
+
+```{r}
+#Consider data onlly for 2018-2020
+df <- data[data$YearStart %in% c('2018', '2019', '2020'), ]
+#Standardized values are considered here. There are other categories as well but we only considered numeric Data Values
+df <- df[df$DataValueType %in% c('Number')]
+#Group by topic 
+df_chronic_diseases = df %>% group_by(df$Topic) %>% summarise(total_count=n(),  .groups ='drop')
+
+#Plot the data for initial exploration
+ggplot(df_chronic_diseases, aes(x=df_chronic_diseases$`df$Topic`,y=df_chronic_diseases$total_count)) +
+  geom_bar(stat = "identity",fill = "cornflowerblue") +
+  ggtitle("Count of distribution of total diseases") +
+ 
+  ylab("Total Count") +
+  xlab("Diseases")+
+   coord_flip() +
+  theme(panel.grid.major.x = element_blank())
+
+```
+
+```{r}
+#Plot a diseasedistribution on a Spatial Data 
+#Get diseases only belonging to a particular category 
+df_disease <- df[df$Topic %in% c('Alcohol'), ]
+
+df_disease <- df_disease %>% group_by(LocationDesc) %>% summarise(total_count=n(),  .groups ='drop') 
+colnames(df_disease) <- c('state','value')
+
+df_disease <- df_disease  %>% as.data.frame() %>% 
+
+  transmute(region = tolower(`state`), value = df_disease$value)
+
+state_choropleth(df_disease,
+                 title = "State Alcohol consumption, 2018-2020",
+                 legend = "Alcohol Ratio")
+
+```
+
+```{r}
+df_disease
+```
+
+```{r}
+separated_coord <- df %>%
+    mutate(long = unlist(map(df$GeoLocation,1)),
+           lat = unlist(map(df$GeoLocation,2) ) )
+```
+
