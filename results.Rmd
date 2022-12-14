@@ -1,1 +1,47 @@
 # Results
+
+```{r}
+#All Imports here
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(choroplethr)
+library(tidyverse)
+library(mapview)
+library(lubridate)
+library(geofacet)
+library(plotly)
+options(warn=-1)
+```
+
+```{r}
+df<- read.csv('https://raw.githubusercontent.com/vritansh/geochronicdisease/main/eda_geo_spliced.csv')
+
+plot_geospatial_us <- function(df_disease, title, legend) {
+  
+  #Aggregate all values for a particular state
+  df_disease <- df_disease %>% group_by(LocationDesc) %>% summarise(total_count=sum(DataValue),  .groups='drop') 
+  
+  #Create state and value column names for cholorpleth
+  colnames(df_disease) <- c('state','value')
+  
+  #Preprocess data for graph
+  df_disease_display <- df_disease  %>% 
+    as.data.frame() %>% 
+    transmute(region = tolower(`state`), value = df_disease$value)
+  
+  #Display choropleth
+  state_choropleth(df_disease_display,
+                   title = title,
+                   legend = legend)
+}
+
+```
+
+
+```{r}
+
+df_disease <- df[df$Topic == 'Cardiovascular Disease', ]
+plot_geospatial_us(df_disease = df_disease,title = "Mortality due to Cardiovascular disease", legend = "Count of Mortality")
+```
