@@ -14,9 +14,10 @@ library(geofacet)
 library(plotly)
 options(warn=-1)
 ```
+#Data
 
 ```{r}
-df<- read.csv('https://raw.githubusercontent.com/vritansh/geochronicdisease/main/eda_geo_spliced.csv')
+df<- read.csv('https://raw.githubusercontent.com/vritansh/geochronicdisease/main/data/eda_geo_spliced.csv')
 
 plot_geospatial_us <- function(df_disease, title, legend) {
   
