@@ -77,6 +77,9 @@
 
 ## Sources
 
+The dataset used in this project is borrowed from the division of population health in <b>Center for Disease Control and Prevention (CDC)</b> - (https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi). 
+The dataset was created on 10th November 2020 and was last modified on 21st April 2022.
+
 ```{r}
 library(dplyr)
 library(ggplot2)
@@ -88,79 +91,104 @@ library(tidyverse)
 library(mapview)
 ```
 
-1.   Load the dataset
-
-https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi
+It contains 1082328 entries, where there are 34 attributes contributing to the observance of the chronic disease in the United States of America.
 
     ```{r}
     data <- read.csv("ChronicDiseases.csv")
     dim(data)
-    str(data)
     ```
 
-    Removing makes more sense than imputing
+Let's have a look at the structure of the dataset in order to comprehend the varied traits that help define the data. 
+
+```{r}
+str(data)
+```
+
+The attributes that we focus on for this project are:
+
+<li>YearStart : Year in which the chronic disease was recorded.</li> 
+<li>LocationAbbr : State associated with the chronic disease.</li> 
+<li>DataSource : Contributors for the survey conducted to record the chronic diseases.</li> 
+<li>Topic : Name of the chronic disease.</li> 
+<li>Question : Indicators associated with a chronic disease, for example - Mortality, Binge Consumption, etc,.</li> 
+<li>DataValue : Population that have been affected by a specific indicator.</li> 
+<li>Stratification1 : Describes the gender or race of an individual.</li> 
+<li>GeoLocation : The latitude and longitude points at which the data was collected.</li>  
+
+</br>
+We observe that there are several redundant columns and multiple columns with null values. Since we can't work directly with this dataset, we analyze the missing values and then transform the data into it's usable form.
+
+## Missing value analysis
+
+We need to check whether the data has NA values or in some cases just a null string.
+
+```{r}
+NA_count <- colSums(is.na(data))
+NA_count
+```
+
+--- one plot to 100% missing values ---
+
+it is clear that the columns - "Response", "DataValueAlt", "LowConfidenceLimit", "HighConfidenceLimit", "StratificationCategory2", "Stratification2", "StratificationCategory3", "Stratification3", "ResponseID", 
+
+
+------ Add Ritvik's Code --------
 
 ## Cleaning / transformation
 
-1.  Trim the data to only consider entries from 2018 - 2020 (COVID PERIOD)
+Based on the analysis from the plots above, we will be dropping 16 features (mentioned above) that have missing values since it makes more sense than imputing those columns.
+
+```{r}
+    data <-dplyr::select(data, -c('StratificationCategoryID2', 'StratificationCategoryID3','StratificationID2','StratificationID3', 'StratificationCategory2','Stratification2','StratificationCategory3','Stratification3', 'LowConfidenceLimit','Response', 'HighConfidenceLimit','ResponseID','DataValueUnit','DataValueAlt','DataValueFootnoteSymbol', 'DatavalueFootnote'))
+    str(data)
+```
+
+To be more specific on a period of data, we will be trimming the dataset down to the "Pre-During COVID" period i,e 2018 - 2020 to estimate the effect of chronic diseases on the individuals.
+
 
     ```{r}
     data <- data[data$YearStart %in% c('2018', '2019', '2020'), ]
     ```
 
-2.  Remove the unnecessary columns from data
-
-    ```{r}
-    data <-dplyr::select(data, -c('StratificationCategoryID2', 'StratificationCategoryID3','StratificationID2','StratificationID3', 'StratificationCategory2','Stratification2','StratificationCategory3','Stratification3', 'LowConfidenceLimit','Response', 'HighConfidenceLimit','ResponseID','DataValueUnit','DataValueAlt','DataValueFootnoteSymbol', 'DatavalueFootnote'))
-    str(data)
-    ```
-
-3.  Since, we have many categories in Data Value, we are focusing on "Number"
+Since there are many categories in the Data Value type, we will extract entries related to "Number" that give us the population count.
 
     ```{r}
     data <- data[data$DataValueType %in% c("Number"), ]
     ```
 
-    Preprocess for ease of access
-
     ```{r}
     data$DataValue[data$DataValue==""] <- 0
     data$DataValue <- as.numeric(data$DataValue)
-    dim(data)
     str(data)
     ```
 
-4.  Data Source Distribution
+
+There are 8 data sources contributing to the collection of chronic data after pre-processing the data,(intially there were 26 contributors). 
 
     ```{r}
     length(unique(data$DataSource))
     ```
-
-    There are 8 data sources contributing to the trimmed data, we will be working with the most optimal contributor.
 
     ```{r}
     data %>%
       group_by(DataSource) %>%
       summarise(count = n()) %>%
       ggplot(aes(x=fct_reorder(DataSource, count,.desc = FALSE),y=count)) +
-      geom_bar(stat = "identity",fill = "cornflowerblue") +
+      geom_bar(stat = "identity",fill = "orange") +
       ggtitle("DataSource Distribution") +
       coord_flip()+
-      xlab("") +
+      xlab("DataSource") + 
       theme(panel.grid.major.x = element_blank())
 
     ```
 
-    Since "NVSS" has most contributions, we will be using the data only from that source.
+From the plot, it is clear that "NVSS" has most contributions, we will be using the data only from that source for our analysis. 
 
     ```{r}
     data <- data[data$DataSource %in% c("NVSS"), ]
     dim(data)
+    str(data)
     ```
 
-## Missing value analysis
-
-```{r}
-
-```
+The updated data after cleaning and considering the optimal attributes has 10540 entries and 18 attributes that constitutes our primary 8 featurese along with 10 supporting features for analysis.
 
