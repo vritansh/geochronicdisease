@@ -1,0 +1,182 @@
+---
+title: "US_Chronic_Diseases"
+author: "Maria Pratyusha"
+date: "2022-12-13"
+output: html_document
+---
+
+1.  Import the libraries
+
+    ```{r}
+    library(dplyr)
+    library(ggplot2)
+    library(forcats)
+    library(tidyr)
+    library(tibble)
+    library(choroplethr)
+    library(tidyverse)
+    library(mapview)
+    ```
+
+2.  Load the dataset
+
+    ```{r}
+    data <- read.csv("ChronicDiseases.csv")
+    View(data)
+    ```
+
+3.  Trim the data to only consider entries from 2018 - 2020 (COVID PERIOD)
+
+    ```{r}
+    data <- data[data$YearStart %in% c('2018', '2019', '2020'), ]
+    dim(data)
+    ```
+
+4.  Remove the unnecessary columns from data
+
+    ```{r}
+    data <-dplyr::select(data, -c('StratificationCategoryID2', 'StratificationCategoryID3','StratificationID2','StratificationID3', 'StratificationCategory2','Stratification2','StratificationCategory3','Stratification3', 'LowConfidenceLimit','Response', 'HighConfidenceLimit','ResponseID','DataValueUnit','DataValueAlt','DataValueFootnoteSymbol', 'DatavalueFootnote'))
+    dim(data)
+    ```
+
+5.  Since, we have many categories in Data Value, we are focusing on "Number"
+
+    ```{r}
+    data <- data[data$DataValueType %in% c("Number"), ]
+    dim(data)
+    ```
+
+    ```{r}
+    data$DataValue[data$DataValue==""] <- 0
+    data$DataValue <- as.numeric(data$DataValue)
+    str(data)
+    ```
+
+6.  Data Sources Distribution
+
+    ```{r}
+    length(unique(data$DataSource))
+    ```
+
+    There are 8 data sources contributing to the trimmed data, we will be working with the most optimal contributor.
+
+    ```{r}
+    data %>%
+      group_by(DataSource) %>%
+      summarise(count = n()) %>%
+      ggplot(aes(x=fct_reorder(DataSource, count,.desc = FALSE),y=count)) +
+      geom_bar(stat = "identity",fill = "cornflowerblue") +
+      ggtitle("DataSource Distribution") +
+      coord_flip()+
+      xlab("") +
+      theme(panel.grid.major.x = element_blank())
+
+    ```
+
+Since "NVSS" has most contributions, we will be using the data only from that source.
+
+```{r}
+data <- data[data$DataSource %in% c("NVSS"), ]
+dim(data)
+```
+
+7.  Topic Distribution
+
+    ```{r}
+
+    data %>%
+      group_by(Topic) %>%
+      summarise(count = sum(DataValue)) %>%
+      ggplot(aes(x=fct_reorder(Topic, count,.desc = FALSE),y=count)) +
+      geom_bar(stat = "identity",fill = "purple") +
+      ggtitle("Topic Distribution") +
+      coord_flip()+
+      xlab("") +
+      theme(panel.grid.major.x = element_blank())
+    ```
+
+    The top three diseases are "Cardiovascular Disease", "Chronic Obstructive Pulmonary Disease" and "Diabetes".
+
+    ```{r}
+    data <- data[data$Topic %in% c("Cardiovascular Disease", "Chronic Obstructive Pulmonary Disease", "Diabetes", "Overarching Conditions", "Chronic Kidney Disease"), ]
+    dim(data)
+    ```
+
+8.  Gender Distribution
+
+```{r}
+data_distribution <- data %>% group_by(Topic, StratificationCategoryID1, Stratification1) %>% summarise(total_count=sum(DataValue),  .groups ='drop')
+View(data_distribution)
+```
+
+```{r}
+data_G <- data_distribution[data_distribution$StratificationCategoryID1 %in% c("GENDER"), ]
+View(data_G)
+```
+
+```{r}
+ggplot(data_G, aes(x = Stratification1, y = total_count)) +
+  geom_col(position = "dodge", fill = "green") +
+  ggtitle("Gender Distribution") +
+  xlab("") +
+  ylab("Count")+
+  facet_wrap(~Topic)
+```
+
+9.  Race Distribution
+
+    ```{r}
+    data_R <- data_distribution[data_distribution$StratificationCategoryID1 %in% c("RACE"), ]
+    View(data_R)
+    ```
+
+    ```{r}
+    ggplot(data_R, aes(x = Stratification1, y = total_count)) +
+      geom_col(position = "dodge", fill = "green") +
+      ggtitle("Race Distribution") +
+      xlab("") +
+      coord_flip()+
+      ylab("Count")+
+      facet_wrap(~Topic)
+    ```
+
+<!-- -->
+
+10. Geospatial Analysis
+
+    ```{r}
+    plot_geospatial_us <- function(df_disease, title, legend) {
+      
+      #Aggregate all values for a particular state
+      df_disease <- df_disease %>% group_by(LocationDesc) %>% summarise(total_count=sum(DataValue),  .groups ='drop') 
+      
+      #Create state and value column names for cholorpleth
+      colnames(df_disease) <- c('state','value')
+      
+      #Plot graph
+      df_disease_display <- df_disease  %>% 
+        as.data.frame() %>% 
+        transmute(region = tolower(`state`), value = df_disease$value)
+      
+      #Display choropleth
+      state_choropleth(df_disease_display,
+                       title = title,
+                       legend = legend)
+    }
+    ```
+
+    ```{r}
+    df_disease <- data[data$Topic == 'Cardiovascular Disease', ]
+    plot_geospatial_us(df_disease = df_disease,title = "Mortality due to Cardiovascular disease", legend = "Count of Cardiovascular Diseases")
+    ```
+
+```{r}
+data_distribution_states <- data %>% group_by(Topic, StratificationCategoryID1, Stratification1) %>% summarise(total_count=sum(DataValue),  .groups ='drop')
+View(data_distribution)
+```
+
+Sources - NVSS
+
+Cleaning and T - Topic , Top 5 states
+
+Results - Gender , Top 3 topic spread in top 5 states
