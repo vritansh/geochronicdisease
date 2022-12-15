@@ -1,0 +1,127 @@
+```{r}
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(choroplethr)
+library(tidyverse)
+library(mapview)
+```
+
+```{r}
+data = read.csv('/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv')
+```
+
+```{r}
+clean_dataset <- function(data) {
+#Get only useful columns, Drop the ones not required
+data <-dplyr::select(data, -c('StratificationCategoryID2', 'StratificationCategoryID3','StratificationID2','StratificationID3', 'StratificationCategory2','Stratification2','StratificationCategory3','Stratification3','Response','LowConfidenceLimit', 'HighConfidenceLimit', 'ResponseID', 'DataValueUnit', 'DataValueAlt'
+                                          ))
+          
+          #Consider data only for 2018-2020
+          df <- data[data$YearStart %in% c('2018', '2019', '2020'), ]
+          
+          #Select only number
+          df <- df[df$DataValueType %in% c('Number'), ]
+          
+          #Preprocess data here 
+          df$DataValue[df$DataValue==""] <- 0
+          
+          #replace data with a numerical value
+          df$DataValue <- as.numeric(df$DataValue)
+          
+          #Add code for NVSS
+          df <- df[df$DataSource %in% c('NVSS'), ]
+          
+          #https://stackoverflow.com/questions/50037640/r-extract-coordinates-from-string-in-dataframe
+          #Provide reference for the X and Y 
+          df[c("Longitude", "Latitude")] <- do.call(rbind, lapply(strsplit(df$GeoLocation , "[()]"), function(col) {
+            (parts <- unlist(strsplit(col[2], " ")))
+          }))
+          
+          return(df)
+}
+
+```
+
+
+```{r}
+# separated_coord <- df %>%
+#     mutate(long = unlist(map(df$GeoLocation,1)),
+#            lat = unlist(map(df$GeoLocation,2) ) )
+```
+
+```{r}
+
+plot_geospatial_us <- function(df_disease, title, legend) {
+  
+  #Aggregate all values for a particular state
+  df_disease <- df_disease %>% group_by(LocationDesc) %>% summarise(total_count=sum(DataValue),  .groups ='drop') 
+  
+  #Create state and value column names for cholorpleth
+  colnames(df_disease) <- c('state','value')
+  
+  #Plot graph
+  df_disease_display <- df_disease  %>% 
+    as.data.frame() %>% 
+    transmute(region = tolower(`state`), value = df_disease$value)
+  
+  #Display choropleth
+  state_choropleth(df_disease_display,
+                   title = title,
+                   legend = legend)
+}
+
+```
+
+
+```{r}
+df <- clean_dataset(data = data)
+View(df)
+#First Disease i.e. Cardiovascular Disease
+```
+
+
+```{r}
+df_disease <- df[df$Topic == 'Cardiovascular Disease', ]
+plot_geospatial_us(df_disease = df_disease,title = "Mortality due to Cardiovascular disease", legend = "Count of Cardiovascular Diseases")
+
+```
+
+```{r}
+
+df_disease <- df[df$Topic == 'Chronic Obstructive Pulmonary Disease', ]
+plot_geospatial_us(df_disease = df_disease, title = "Chronic Obstructive Pulmonary Disease", "Mortality Quantification")
+
+
+```
+
+
+```{r}
+
+df_disease <- df[df$Topic == 'Diabetes', ]
+plot_geospatial_us(df_disease = df_disease, title="Title", legend ="Legend")
+
+```
+
+
+```{r}
+
+
+```
+
+
+```{r}
+
+df = transform(df, x = as.double(Latitude))
+
+#convert column1 column type to numeric
+df$Longitude = as.double(df$Longitude) 
+
+#return the datatype of each column
+print(sapply(my_dataframe, class)) 
+
+mapview(df, xcol = "Longitude", ycol = "Latitude", crs = 4269, grid = FALSE)
+
+```
+

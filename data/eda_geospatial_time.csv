@@ -1,0 +1,281 @@
+"LocationAbbr","Topic","YearEnd","total_count"
+"FL","Asthma",2011-12-14,438
+"FL","Asthma",2015-12-14,518
+"FL","Asthma",2010-12-14,528
+"FL","Asthma",2017-12-14,534
+"FL","Asthma",2016-12-14,548
+"FL","Asthma",2013-12-14,560
+"FL","Asthma",2014-12-14,569
+"TX","Asthma",2010-12-14,571
+"TX","Asthma",2016-12-14,574
+"TX","Asthma",2011-12-14,580
+"FL","Asthma",2012-12-14,582
+"FL","Asthma",2019-12-14,592
+"TX","Asthma",2019-12-14,606
+"TX","Asthma",2012-12-14,611
+"TX","Asthma",2013-12-14,627
+"TX","Asthma",2014-12-14,632
+"FL","Asthma",2018-12-14,633
+"TX","Asthma",2018-12-14,636
+"TX","Asthma",2017-12-14,684
+"TX","Asthma",2015-12-14,712
+"NY","Asthma",2011-12-14,752
+"NY","Asthma",2017-12-14,754
+"NY","Asthma",2018-12-14,782
+"NY","Asthma",2016-12-14,805
+"NY","Asthma",2010-12-14,829
+"NY","Asthma",2013-12-14,830
+"NY","Asthma",2012-12-14,835
+"NY","Asthma",2019-12-14,848
+"NY","Asthma",2015-12-14,859
+"NY","Asthma",2014-12-14,886
+"CA","Asthma",2019-12-14,1130
+"CA","Asthma",2012-12-14,1150
+"CA","Asthma",2018-12-14,1159
+"CA","Asthma",2016-12-14,1169
+"CA","Asthma",2015-12-14,1172
+"CA","Asthma",2017-12-14,1193
+"CA","Asthma",2010-12-14,1205
+"CA","Asthma",2011-12-14,1208
+"CA","Asthma",2014-12-14,1218
+"CA","Asthma",2013-12-14,1227
+"NY","Alcohol",2010-12-14,4277
+"NY","Alcohol",2011-12-14,4468
+"NY","Alcohol",2012-12-14,4479
+"NY","Alcohol",2013-12-14,4633
+"NY","Alcohol",2015-12-14,4670
+"NY","Alcohol",2014-12-14,4689
+"NY","Alcohol",2016-12-14,4809
+"NY","Alcohol",2018-12-14,4903
+"NY","Alcohol",2017-12-14,4967
+"NY","Alcohol",2019-12-14,4978
+"FL","Alcohol",2010-12-14,7404
+"FL","Alcohol",2012-12-14,7722
+"FL","Alcohol",2011-12-14,7753
+"FL","Alcohol",2013-12-14,7954
+"TX","Alcohol",2010-12-14,8603
+"FL","Alcohol",2014-12-14,9075
+"FL","Alcohol",2015-12-14,9198
+"TX","Alcohol",2011-12-14,9254
+"FL","Alcohol",2017-12-14,9271
+"FL","Alcohol",2019-12-14,9569
+"FL","Alcohol",2016-12-14,9669
+"TX","Alcohol",2012-12-14,9868
+"FL","Alcohol",2018-12-14,10021
+"TX","Alcohol",2013-12-14,10215
+"TX","Alcohol",2014-12-14,11011
+"TX","Alcohol",2015-12-14,11506
+"TX","Alcohol",2016-12-14,11616
+"TX","Alcohol",2017-12-14,12287
+"TX","Alcohol",2018-12-14,12436
+"CA","Alcohol",2010-12-14,12856
+"TX","Alcohol",2019-12-14,13054
+"CA","Alcohol",2011-12-14,13694
+"CA","Alcohol",2012-12-14,14032
+"CA","Alcohol",2013-12-14,14455
+"CA","Alcohol",2014-12-14,15017
+"CA","Alcohol",2016-12-14,15830
+"CA","Alcohol",2017-12-14,15958
+"CA","Alcohol",2018-12-14,16153
+"CA","Alcohol",2015-12-14,16252
+"CA","Alcohol",2019-12-14,16703
+"NY","Chronic Kidney Disease",2015-12-14,27650
+"NY","Chronic Kidney Disease",2016-12-14,27800
+"NY","Chronic Kidney Disease",2014-12-14,27941
+"NY","Chronic Kidney Disease",2017-12-14,28021
+"NY","Chronic Kidney Disease",2018-12-14,28337
+"NY","Chronic Kidney Disease",2013-12-14,28451
+"NY","Chronic Kidney Disease",2019-12-14,28474
+"FL","Diabetes",2011-12-14,33344
+"FL","Diabetes",2010-12-14,33635
+"FL","Chronic Kidney Disease",2013-12-14,33702
+"FL","Chronic Kidney Disease",2014-12-14,33765
+"NY","Chronic Kidney Disease",2010-12-14,34826
+"FL","Diabetes",2012-12-14,35341
+"FL","Chronic Kidney Disease",2015-12-14,35767
+"NY","Diabetes",2014-12-14,36262
+"NY","Diabetes",2010-12-14,36816
+"FL","Chronic Kidney Disease",2016-12-14,37015
+"FL","Diabetes",2013-12-14,37235
+"FL","Diabetes",2014-12-14,37565
+"NY","Diabetes",2012-12-14,37682
+"NY","Diabetes",2013-12-14,37991
+"NY","Diabetes",2011-12-14,38045
+"FL","Chronic Kidney Disease",2017-12-14,38227
+"FL","Chronic Kidney Disease",2010-12-14,38862
+"NY","Chronic Kidney Disease",2012-12-14,39382
+"FL","Chronic Kidney Disease",2018-12-14,39614
+"NY","Diabetes",2015-12-14,40188
+"NY","Chronic Kidney Disease",2011-12-14,40229
+"NY","Diabetes",2016-12-14,40330
+"FL","Chronic Kidney Disease",2019-12-14,41332
+"FL","Chronic Kidney Disease",2011-12-14,41742
+"NY","Diabetes",2017-12-14,42010
+"FL","Diabetes",2015-12-14,42064
+"FL","Chronic Kidney Disease",2012-12-14,42592
+"NY","Diabetes",2019-12-14,44351
+"TX","Diabetes",2010-12-14,44621
+"TX","Diabetes",2011-12-14,45630
+"FL","Diabetes",2016-12-14,46360
+"TX","Diabetes",2012-12-14,47333
+"TX","Chronic Kidney Disease",2013-12-14,49246
+"TX","Diabetes",2013-12-14,49852
+"FL","Diabetes",2017-12-14,49951
+"TX","Diabetes",2014-12-14,50333
+"TX","Chronic Kidney Disease",2014-12-14,50415
+"TX","Chronic Kidney Disease",2010-12-14,52278
+"FL","Diabetes",2019-12-14,52784
+"TX","Chronic Kidney Disease",2015-12-14,53360
+"TX","Chronic Kidney Disease",2016-12-14,54066
+"NY","Chronic Obstructive Pulmonary Disease",2014-12-14,56797
+"TX","Chronic Kidney Disease",2017-12-14,57985
+"NY","Chronic Obstructive Pulmonary Disease",2016-12-14,58356
+"NY","Chronic Obstructive Pulmonary Disease",2010-12-14,58376
+"TX","Chronic Kidney Disease",2019-12-14,58791
+"NY","Chronic Obstructive Pulmonary Disease",2015-12-14,59189
+"NY","Chronic Obstructive Pulmonary Disease",2013-12-14,59841
+"NY","Chronic Obstructive Pulmonary Disease",2019-12-14,59890
+"NY","Chronic Obstructive Pulmonary Disease",2011-12-14,59953
+"NY","Chronic Obstructive Pulmonary Disease",2012-12-14,60040
+"NY","Chronic Obstructive Pulmonary Disease",2017-12-14,60785
+"TX","Chronic Kidney Disease",2011-12-14,60911
+"NY","Chronic Obstructive Pulmonary Disease",2018-12-14,60967
+"TX","Chronic Kidney Disease",2018-12-14,61021
+"CA","Chronic Kidney Disease",2013-12-14,61889
+"CA","Chronic Kidney Disease",2014-12-14,61935
+"TX","Diabetes",2015-12-14,64921
+"TX","Chronic Kidney Disease",2012-12-14,65241
+"TX","Diabetes",2016-12-14,65464
+"CA","Chronic Kidney Disease",2015-12-14,66060
+"CA","Chronic Kidney Disease",2016-12-14,67713
+"CA","Chronic Kidney Disease",2017-12-14,69486
+"TX","Diabetes",2017-12-14,69496
+"CA","Chronic Kidney Disease",2018-12-14,69619
+"CA","Chronic Kidney Disease",2019-12-14,71364
+"NY","Diabetes",2018-12-14,71569
+"TX","Diabetes",2019-12-14,72627
+"CA","Diabetes",2010-12-14,73920
+"CA","Diabetes",2011-12-14,75246
+"CA","Diabetes",2012-12-14,75445
+"CA","Diabetes",2014-12-14,75948
+"CA","Chronic Kidney Disease",2010-12-14,77307
+"CA","Diabetes",2013-12-14,77462
+"TX","Chronic Obstructive Pulmonary Disease",2010-12-14,78481
+"NY","Overarching Conditions",2019-12-14,79020
+"NY","Overarching Conditions",2018-12-14,80244
+"NY","Overarching Conditions",2015-12-14,80321
+"NY","Overarching Conditions",2010-12-14,80413
+"TX","Chronic Obstructive Pulmonary Disease",2011-12-14,80851
+"NY","Overarching Conditions",2011-12-14,80879
+"NY","Overarching Conditions",2012-12-14,81033
+"NY","Overarching Conditions",2013-12-14,81075
+"NY","Overarching Conditions",2017-12-14,81102
+"NY","Overarching Conditions",2014-12-14,81109
+"NY","Overarching Conditions",2016-12-14,82298
+"FL","Diabetes",2018-12-14,84633
+"FL","Chronic Obstructive Pulmonary Disease",2011-12-14,84847
+"TX","Chronic Obstructive Pulmonary Disease",2012-12-14,85079
+"FL","Chronic Obstructive Pulmonary Disease",2010-12-14,85370
+"FL","Chronic Obstructive Pulmonary Disease",2012-12-14,87471
+"TX","Chronic Obstructive Pulmonary Disease",2014-12-14,87729
+"TX","Chronic Obstructive Pulmonary Disease",2013-12-14,87837
+"CA","Chronic Kidney Disease",2011-12-14,91288
+"TX","Chronic Obstructive Pulmonary Disease",2015-12-14,92219
+"TX","Chronic Obstructive Pulmonary Disease",2016-12-14,92514
+"FL","Chronic Obstructive Pulmonary Disease",2014-12-14,93148
+"CA","Chronic Kidney Disease",2012-12-14,93759
+"FL","Chronic Obstructive Pulmonary Disease",2013-12-14,94079
+"CA","Diabetes",2015-12-14,94129
+"CA","Diabetes",2016-12-14,96242
+"TX","Chronic Obstructive Pulmonary Disease",2017-12-14,96871
+"FL","Overarching Conditions",2010-12-14,97396
+"TX","Chronic Obstructive Pulmonary Disease",2019-12-14,97743
+"FL","Chronic Obstructive Pulmonary Disease",2015-12-14,98180
+"TX","Chronic Obstructive Pulmonary Disease",2018-12-14,98499
+"FL","Overarching Conditions",2011-12-14,98655
+"FL","Overarching Conditions",2012-12-14,99900
+"CA","Diabetes",2017-12-14,100114
+"CA","Diabetes",2019-12-14,100495
+"FL","Overarching Conditions",2013-12-14,100511
+"FL","Chronic Obstructive Pulmonary Disease",2016-12-14,102672
+"FL","Overarching Conditions",2014-12-14,103053
+"FL","Overarching Conditions",2015-12-14,105597
+"FL","Chronic Obstructive Pulmonary Disease",2019-12-14,106698
+"FL","Chronic Obstructive Pulmonary Disease",2018-12-14,107015
+"FL","Chronic Obstructive Pulmonary Disease",2017-12-14,108575
+"FL","Overarching Conditions",2016-12-14,109688
+"FL","Overarching Conditions",2019-12-14,109889
+"FL","Overarching Conditions",2018-12-14,110629
+"FL","Overarching Conditions",2017-12-14,111064
+"TX","Overarching Conditions",2010-12-14,112407
+"CA","Chronic Obstructive Pulmonary Disease",2014-12-14,112421
+"CA","Chronic Obstructive Pulmonary Disease",2010-12-14,113452
+"CA","Chronic Obstructive Pulmonary Disease",2012-12-14,113967
+"CA","Chronic Obstructive Pulmonary Disease",2019-12-14,114365
+"TX","Overarching Conditions",2011-12-14,115606
+"CA","Chronic Obstructive Pulmonary Disease",2011-12-14,115917
+"TX","Diabetes",2018-12-14,116393
+"TX","Overarching Conditions",2012-12-14,117980
+"CA","Chronic Obstructive Pulmonary Disease",2015-12-14,118026
+"CA","Chronic Obstructive Pulmonary Disease",2018-12-14,118206
+"CA","Chronic Obstructive Pulmonary Disease",2016-12-14,118517
+"CA","Chronic Obstructive Pulmonary Disease",2013-12-14,119626
+"CA","Chronic Obstructive Pulmonary Disease",2017-12-14,119736
+"TX","Overarching Conditions",2013-12-14,120186
+"TX","Overarching Conditions",2014-12-14,124182
+"TX","Overarching Conditions",2015-12-14,124806
+"TX","Overarching Conditions",2016-12-14,126732
+"TX","Overarching Conditions",2019-12-14,128059
+"TX","Overarching Conditions",2017-12-14,128759
+"TX","Overarching Conditions",2018-12-14,130046
+"CA","Overarching Conditions",2010-12-14,140058
+"CA","Overarching Conditions",2011-12-14,144146
+"CA","Overarching Conditions",2012-12-14,145489
+"CA","Overarching Conditions",2013-12-14,145647
+"CA","Overarching Conditions",2014-12-14,147256
+"CA","Overarching Conditions",2019-12-14,147490
+"CA","Overarching Conditions",2018-12-14,148764
+"CA","Overarching Conditions",2015-12-14,149606
+"CA","Overarching Conditions",2017-12-14,149657
+"CA","Overarching Conditions",2016-12-14,151382
+"CA","Diabetes",2018-12-14,163520
+"TX","Cardiovascular Disease",2011-12-14,421340
+"TX","Cardiovascular Disease",2010-12-14,425033
+"TX","Cardiovascular Disease",2012-12-14,431960
+"FL","Cardiovascular Disease",2011-12-14,432934
+"FL","Cardiovascular Disease",2010-12-14,441522
+"FL","Cardiovascular Disease",2012-12-14,443676
+"TX","Cardiovascular Disease",2013-12-14,444291
+"NY","Cardiovascular Disease",2014-12-14,445333
+"NY","Cardiovascular Disease",2012-12-14,451551
+"NY","Cardiovascular Disease",2016-12-14,451769
+"FL","Cardiovascular Disease",2013-12-14,451883
+"NY","Cardiovascular Disease",2019-12-14,453964
+"NY","Cardiovascular Disease",2017-12-14,454048
+"NY","Cardiovascular Disease",2013-12-14,454074
+"NY","Cardiovascular Disease",2015-12-14,455569
+"NY","Cardiovascular Disease",2018-12-14,458805
+"TX","Cardiovascular Disease",2014-12-14,460049
+"NY","Cardiovascular Disease",2011-12-14,460158
+"NY","Cardiovascular Disease",2010-12-14,464167
+"FL","Cardiovascular Disease",2014-12-14,474536
+"TX","Cardiovascular Disease",2015-12-14,480289
+"TX","Cardiovascular Disease",2016-12-14,486667
+"FL","Cardiovascular Disease",2015-12-14,494887
+"TX","Cardiovascular Disease",2017-12-14,502957
+"FL","Cardiovascular Disease",2016-12-14,504471
+"TX","Cardiovascular Disease",2019-12-14,512921
+"FL","Cardiovascular Disease",2017-12-14,516871
+"TX","Cardiovascular Disease",2018-12-14,518111
+"FL","Cardiovascular Disease",2018-12-14,529852
+"FL","Cardiovascular Disease",2019-12-14,537613
+"CA","Cardiovascular Disease",2014-12-14,654955
+"CA","Cardiovascular Disease",2010-12-14,659822
+"CA","Cardiovascular Disease",2012-12-14,666001
+"CA","Cardiovascular Disease",2011-12-14,670761
+"CA","Cardiovascular Disease",2013-12-14,675979
+"CA","Cardiovascular Disease",2015-12-14,696031
+"CA","Cardiovascular Disease",2016-12-14,702627
+"CA","Cardiovascular Disease",2018-12-14,718963
+"CA","Cardiovascular Disease",2017-12-14,719787
+"CA","Cardiovascular Disease",2019-12-14,720828

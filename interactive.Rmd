@@ -1,3 +1,12 @@
 # Interactive component
 
+<script src="https://d3js.org/d3.v7.js"></script>
 
+<button id="test" onclick="loadData()">
+            Load Data
+</button>
+<div class ='container'  style="padding-top:1px;" id="playground">
+
+</div>
+
+<script src="index.js"></script>

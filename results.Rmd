@@ -19,8 +19,8 @@ options(warn=-1)
 #Preprocessing and converting to minifiles that will be used throughout to plot
 data = read.csv("ChronicDiseases.csv")
 
-```
 
+```
 
 
 ```{r}
@@ -117,6 +117,7 @@ ggplot(data_G, aes(x = Stratification1, y = total_count)) +
 ```
 
 ## Graph Showing the Top Cardiovascular Diseases
+
 
 ```{r}
 df<- read.csv('https://raw.githubusercontent.com/vritansh/geochronicdisease/main/data/eda_geo_spliced.csv')
