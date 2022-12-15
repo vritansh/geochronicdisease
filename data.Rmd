@@ -1,0 +1,86 @@
+# Data 
+
+## Sources
+
+## Cleaning / transformation
+
+## Missing value analysis
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(ggplot2)
+library(tidyverse)
+
+data = read.csv(file = 'CDC.csv') 
+
+df <- data[data$YearStart %in% c('2018', '2019', '2020','2021'), ]
+
+drop <- c("X")
+df = df[,!(names(df) %in% drop)]
+
+tidydf <- df %>% 
+  rownames_to_column("id") %>% 
+  gather(key, value, -id) %>% 
+  mutate(missing = ifelse(is.na(value), "yes", "no"))
+
+dat2 <- read.csv("CDC.csv", header=T, na.strings=c("","NA"))
+sapply(dat2, function(x) sum(is.na(x)))
+df <- dat2[dat2$YearStart %in% c('2018', '2019', '2020','2021'), ]
+missing.values <- df %>%
+  gather(key = "key", value = "val") %>%
+  mutate(is.missing = is.na(val)) %>%
+  group_by(key, is.missing) %>%
+  summarise(num.missing = n()) %>%
+  filter(is.missing==T) %>%
+  select(-is.missing) %>%
+  arrange(desc(num.missing)) 
+```
+```{r}
+ggplot() + geom_bar(data = missing.values, aes(x=key, y=num.missing), stat = 'identity')+labs(x='variable', y="number of missing values", title='Number of missing values') + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + coord_cartesian(ylim=c(0,100000)) + scale_y_continuous(breaks=seq(0,100000,12500))
+```
+```{r}
+library(redav)
+plot_missing(dat2, percent = FALSE)
+```
+```{r}
+row.plot <- df %>%
+  mutate(id = row_number()) %>%
+  gather(-id, key = "key", value = "val") %>%
+  mutate(isna = is.na(val)) %>%
+  ggplot(aes(key, id, fill = isna)) +
+    geom_raster(alpha=0.8) +
+    scale_fill_manual(name = "",
+        values = c('steelblue', 'tomato3'),
+        labels = c("Present", "Missing")) +
+    scale_x_discrete(limits = levels) +
+    labs(x = "Variable",
+           y = "Row Number", title = "Missing values in rows") +
+    coord_flip()
+
+row.plot
+```
+```{r}
+df  %>%
+  summarise_all(list(~is.na(.)))%>%
+  pivot_longer(everything(),
+               names_to = "variables", values_to="missing")
+
+df  %>%
+  summarise_all(list(~is.na(.)))%>%
+  pivot_longer(everything(),
+      names_to = "variables", values_to="missing") %>%
+  count(variables, missing)
+
+df  %>%
+  summarise_all(list(~is.na(.)))%>%
+  pivot_longer(everything(),
+        names_to = "variables", values_to="missing") %>%
+  count(variables, missing) %>%
+  ggplot(aes(y=variables,x=n,fill=missing))+
+  geom_col()
+```
+
+
