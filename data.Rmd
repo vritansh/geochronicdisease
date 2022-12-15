@@ -6,3 +6,167 @@
 
 ## Missing value analysis
 
+```{r}
+
+#data = read.csv(file = 'CDC.csv') 
+
+#df <- data[data$YearStart %in% c('2018', '2019', '2020','2021'), ]
+
+#drop <- c("X")
+#df = df[,!(names(df) %in% drop)]
+
+#tidydf <- df %>% 
+#  rownames_to_column("id") %>% 
+#  gather(key, value, -id) %>% 
+#  mutate(missing = ifelse(is.na(value), "yes", "no"))
+
+#dat2 <- read.csv("CDC.csv", header=T, na.strings=c("","NA"))
+#sapply(dat2, function(x) sum(is.na(x)))
+#df <- dat2[dat2$YearStart %in% c('2018', '2019', '2020','2021'), ]
+#missing.values <- df %>%
+#  gather(key = "key", value = "val") %>%
+#  mutate(is.missing = is.na(val)) %>%
+#  group_by(key, is.missing) %>%
+#  summarise(num.missing = n()) %>%
+#  filter(is.missing==T) %>%
+#  select(-is.missing) %>%
+#  arrange(desc(num.missing)) 
+```
+```{r}
+#ggplot() + geom_bar(data = missing.values, aes(x=key, y=num.missing), stat = 'identity')+labs(x='variable', y="number of missing values", title='Number of missing values') + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + coord_cartesian(ylim=c(0,100000)) + scale_y_continuous(breaks=seq(0,100000,12500))
+```
+```{r}
+#library(redav)
+#plot_missing(dat2, percent = FALSE)
+```
+```{r}
+#row.plot <- df %>%
+#  mutate(id = row_number()) %>%
+#  gather(-id, key = "key", value = "val") %>%
+#  mutate(isna = is.na(val)) %>%
+#  ggplot(aes(key, id, fill = isna)) +
+#    geom_raster(alpha=0.8) +
+#    scale_fill_manual(name = "",
+#        values = c('steelblue', 'tomato3'),
+#        labels = c("Present", "Missing")) +
+#    scale_x_discrete(limits = levels) +
+#    labs(x = "Variable",
+#           y = "Row Number", title = "Missing values in rows") +
+#    coord_flip()
+
+#row.plot
+```
+```{r}
+#df  %>%
+#  summarise_all(list(~is.na(.)))%>%
+#  pivot_longer(everything(),
+#               names_to = "variables", values_to="missing")
+
+#df  %>%
+#  summarise_all(list(~is.na(.)))%>%
+#  pivot_longer(everything(),
+#      names_to = "variables", values_to="missing") %>%
+#  count(variables, missing)
+
+#df  %>%
+#  summarise_all(list(~is.na(.)))%>%
+#  pivot_longer(everything(),
+#        names_to = "variables", values_to="missing") %>%
+#  count(variables, missing) %>%
+#  ggplot(aes(y=variables,x=n,fill=missing))+
+#  geom_col()
+```
+
+
+
+# Data
+
+## Sources
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(forcats)
+library(tidyr)
+library(tibble)
+library(choroplethr)
+library(tidyverse)
+library(mapview)
+```
+
+1.   Load the dataset
+
+https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi
+
+    ```{r}
+    data <- read.csv("ChronicDiseases.csv")
+    dim(data)
+    str(data)
+    ```
+
+    Removing makes more sense than imputing
+
+## Cleaning / transformation
+
+1.  Trim the data to only consider entries from 2018 - 2020 (COVID PERIOD)
+
+    ```{r}
+    data <- data[data$YearStart %in% c('2018', '2019', '2020'), ]
+    ```
+
+2.  Remove the unnecessary columns from data
+
+    ```{r}
+    data <-dplyr::select(data, -c('StratificationCategoryID2', 'StratificationCategoryID3','StratificationID2','StratificationID3', 'StratificationCategory2','Stratification2','StratificationCategory3','Stratification3', 'LowConfidenceLimit','Response', 'HighConfidenceLimit','ResponseID','DataValueUnit','DataValueAlt','DataValueFootnoteSymbol', 'DatavalueFootnote'))
+    str(data)
+    ```
+
+3.  Since, we have many categories in Data Value, we are focusing on "Number"
+
+    ```{r}
+    data <- data[data$DataValueType %in% c("Number"), ]
+    ```
+
+    Preprocess for ease of access
+
+    ```{r}
+    data$DataValue[data$DataValue==""] <- 0
+    data$DataValue <- as.numeric(data$DataValue)
+    dim(data)
+    str(data)
+    ```
+
+4.  Data Source Distribution
+
+    ```{r}
+    length(unique(data$DataSource))
+    ```
+
+    There are 8 data sources contributing to the trimmed data, we will be working with the most optimal contributor.
+
+    ```{r}
+    data %>%
+      group_by(DataSource) %>%
+      summarise(count = n()) %>%
+      ggplot(aes(x=fct_reorder(DataSource, count,.desc = FALSE),y=count)) +
+      geom_bar(stat = "identity",fill = "cornflowerblue") +
+      ggtitle("DataSource Distribution") +
+      coord_flip()+
+      xlab("") +
+      theme(panel.grid.major.x = element_blank())
+
+    ```
+
+    Since "NVSS" has most contributions, we will be using the data only from that source.
+
+    ```{r}
+    data <- data[data$DataSource %in% c("NVSS"), ]
+    dim(data)
+    ```
+
+## Missing value analysis
+
+```{r}
+
+```
+

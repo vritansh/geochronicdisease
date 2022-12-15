@@ -17,13 +17,10 @@ options(warn=-1)
 
 ```{r}
 #Preprocessing and converting to minifiles that will be used throughout to plot
-data = read.csv('/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv')
+data = read.csv("ChronicDiseases.csv")
 
 ```
 
-
-
-# Graph Showing the Top Cardiovascular Diseases
 
 
 ```{r}
@@ -73,7 +70,53 @@ write.csv(df, "eda_geo_spliced.csv", row.names=FALSE)
 
 ```
 
+## Topic Distribution
 
+```{r}
+data <- df
+```
+
+```{r}
+data %>%
+  group_by(Topic) %>%
+  summarise(count = sum(DataValue)) %>%
+  ggplot(aes(x=fct_reorder(Topic, count,.desc = FALSE),y=count)) +
+  geom_bar(stat = "identity",fill = "purple") +
+  ggtitle("Topic Distribution") +
+  coord_flip()+
+  xlab("") +
+  theme(panel.grid.major.x = element_blank())
+```
+
+The three diseases that we are considering are "Cardiovascular Disease", "Chronic Obstructive Pulmonary Disease" and "Diabetes".
+
+```{r}
+data <- data[data$Topic %in% c("Cardiovascular Disease", "Chronic Obstructive Pulmonary Disease", "Diabetes", "Overarching Conditions", "Chronic Kidney Disease"), ]
+dim(data)
+``` 
+
+## Gender Distribution
+
+```{r}
+data_distribution <- data %>% group_by(Topic, StratificationCategoryID1, Stratification1) %>% summarise(total_count=sum(DataValue),  .groups ='drop')
+View(data_distribution)
+```
+
+```{r}
+data_G <- data_distribution[data_distribution$StratificationCategoryID1 %in% c("GENDER"), ]
+View(data_G)
+```
+
+```{r}
+ggplot(data_G, aes(x = Stratification1, y = total_count)) +
+  geom_col(position = "dodge", fill = "green") +
+  ggtitle("Gender Distribution") +
+  xlab("") +
+  ylab("Count")+
+  facet_wrap(~Topic)
+```
+
+## Graph Showing the Top Cardiovascular Diseases
 
 ```{r}
 df<- read.csv('https://raw.githubusercontent.com/vritansh/geochronicdisease/main/data/eda_geo_spliced.csv')

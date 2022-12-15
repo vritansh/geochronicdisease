@@ -10,3 +10,10 @@ missing-value-analysis
 results
 interactive-component
 conclusion
+data-1
+sources-1
+cleaning-transformation-1
+missing-value-analysis-1
+graph-showing-the-top-cardiovascular-diseases
+topic-distribution
+gender-distribution

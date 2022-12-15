@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Data | Geospatial Analysis of Chronic Diseases</title>
+  <meta name="description" content="Chapter 4 Data | Geospatial Analysis of Chronic Diseases" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Data | Geospatial Analysis of Chronic Diseases" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Data | Geospatial Analysis of Chronic Diseases" />
+  
+  
+  
+
+<meta name="author" content="Ritvik Khandelwal, Vritansh Kamal, Maria Pratyusha" />
+
+
+<meta name="date" content="2022-12-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="data.html"/>
+<link rel="next" href="results.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Geospatial Analysis of Chronic Diseases</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="proposal.html"><a href="proposal.html"><i class="fa fa-check"></i><b>2</b> Proposal</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="proposal.html"><a href="proposal.html#research-topic"><i class="fa fa-check"></i><b>2.1</b> Research topic</a></li>
+<li class="chapter" data-level="2.2" data-path="proposal.html"><a href="proposal.html#data-availability"><i class="fa fa-check"></i><b>2.2</b> Data availability</a></li>
+<li class="chapter" data-level="2.3" data-path="proposal.html"><a href="proposal.html#references"><i class="fa fa-check"></i><b>2.3</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#sources"><i class="fa fa-check"></i><b>3.1</b> Sources</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-1.html"><a href="data-1.html#sources-1"><i class="fa fa-check"></i><b>4.1</b> Sources</a></li>
+<li class="chapter" data-level="4.2" data-path="data-1.html"><a href="data-1.html#cleaning-transformation-1"><i class="fa fa-check"></i><b>4.2</b> Cleaning / transformation</a></li>
+<li class="chapter" data-level="4.3" data-path="data-1.html"><a href="data-1.html#missing-value-analysis-1"><i class="fa fa-check"></i><b>4.3</b> Missing value analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
+<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Geospatial Analysis of Chronic Diseases</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-1" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Data<a href="data-1.html#data-1" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="sources-1" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Sources<a href="data-1.html#sources-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Load the dataset</li>
+</ol>
+<p><a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi" class="uri">https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi</a></p>
+<pre><code>```
+## [1] 1082328      34
+```
+
+```
+## &#39;data.frame&#39;:    1082328 obs. of  34 variables:
+##  $ YearStart                : int  2010 2017 2018 2011 2012 2015 2018 2010 2014 2016 ...
+##  $ YearEnd                  : int  2010 2017 2018 2011 2012 2015 2018 2010 2014 2016 ...
+##  $ LocationAbbr             : chr  &quot;AK&quot; &quot;AK&quot; &quot;AK&quot; &quot;AK&quot; ...
+##  $ LocationDesc             : chr  &quot;Alaska&quot; &quot;Alaska&quot; &quot;Alaska&quot; &quot;Alaska&quot; ...
+##  $ DataSource               : chr  &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; ...
+##  $ Topic                    : chr  &quot;Alcohol&quot; &quot;Alcohol&quot; &quot;Alcohol&quot; &quot;Chronic Kidney Disease&quot; ...
+##  $ Question                 : chr  &quot;Chronic liver disease mortality&quot; &quot;Chronic liver disease mortality&quot; &quot;Chronic liver disease mortality&quot; &quot;Mortality with end-stage renal disease&quot; ...
+##  $ Response                 : logi  NA NA NA NA NA NA ...
+##  $ DataValueUnit            : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ DataValueType            : chr  &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; ...
+##  $ DataValue                : chr  &quot;70&quot; &quot;121&quot; &quot;121&quot; &quot;221&quot; ...
+##  $ DataValueAlt             : num  70 121 121 221 234 ...
+##  $ DataValueFootnoteSymbol  : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ DatavalueFootnote        : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ LowConfidenceLimit       : num  NA NA NA NA NA ...
+##  $ HighConfidenceLimit      : num  NA NA NA NA NA ...
+##  $ StratificationCategory1  : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Overall&quot; &quot;Race/Ethnicity&quot; ...
+##  $ Stratification1          : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Overall&quot; &quot;White, non-Hispanic&quot; ...
+##  $ StratificationCategory2  : logi  NA NA NA NA NA NA ...
+##  $ Stratification2          : logi  NA NA NA NA NA NA ...
+##  $ StratificationCategory3  : logi  NA NA NA NA NA NA ...
+##  $ Stratification3          : logi  NA NA NA NA NA NA ...
+##  $ GeoLocation              : chr  &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; ...
+##  $ ResponseID               : logi  NA NA NA NA NA NA ...
+##  $ LocationID               : int  2 2 2 2 2 2 2 2 2 2 ...
+##  $ TopicID                  : chr  &quot;ALC&quot; &quot;ALC&quot; &quot;ALC&quot; &quot;CKD&quot; ...
+##  $ QuestionID               : chr  &quot;ALC6_0&quot; &quot;ALC6_0&quot; &quot;ALC6_0&quot; &quot;CKD1_0&quot; ...
+##  $ DataValueTypeID          : chr  &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; ...
+##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;OVERALL&quot; &quot;OVERALL&quot; &quot;RACE&quot; ...
+##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;OVR&quot; &quot;OVR&quot; &quot;WHT&quot; ...
+##  $ StratificationCategoryID2: logi  NA NA NA NA NA NA ...
+##  $ StratificationID2        : logi  NA NA NA NA NA NA ...
+##  $ StratificationCategoryID3: logi  NA NA NA NA NA NA ...
+##  $ StratificationID3        : logi  NA NA NA NA NA NA ...
+```
+
+Removing makes more sense than imputing</code></pre>
+</div>
+<div id="cleaning-transformation-1" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Cleaning / transformation<a href="data-1.html#cleaning-transformation-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li><p>Trim the data to only consider entries from 2018 - 2020 (COVID PERIOD)</p></li>
+<li><p>Remove the unnecessary columns from data</p>
+<pre><code>## &#39;data.frame&#39;:    242935 obs. of  18 variables:
+##  $ YearStart                : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ YearEnd                  : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ LocationAbbr             : chr  &quot;AK&quot; &quot;AK&quot; &quot;AL&quot; &quot;AR&quot; ...
+##  $ LocationDesc             : chr  &quot;Alaska&quot; &quot;Alaska&quot; &quot;Alabama&quot; &quot;Arkansas&quot; ...
+##  $ DataSource               : chr  &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; ...
+##  $ Topic                    : chr  &quot;Alcohol&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; ...
+##  $ Question                 : chr  &quot;Chronic liver disease mortality&quot; &quot;Mortality from total cardiovascular diseases&quot; &quot;Mortality from coronary heart disease&quot; &quot;Mortality from coronary heart disease&quot; ...
+##  $ DataValueType            : chr  &quot;Number&quot; &quot;Crude Rate&quot; &quot;Number&quot; &quot;Number&quot; ...
+##  $ DataValue                : chr  &quot;121&quot; &quot;153.2&quot; &quot;3056&quot; &quot;2022&quot; ...
+##  $ StratificationCategory1  : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Gender&quot; &quot;Gender&quot; ...
+##  $ Stratification1          : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Male&quot; &quot;Female&quot; ...
+##  $ GeoLocation              : chr  &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-86.63186076199969 32.84057112200048)&quot; &quot;POINT (-92.27449074299966 34.74865012400045)&quot; ...
+##  $ LocationID               : int  2 2 1 5 4 4 6 8 9 9 ...
+##  $ TopicID                  : chr  &quot;ALC&quot; &quot;CVD&quot; &quot;CVD&quot; &quot;CVD&quot; ...
+##  $ QuestionID               : chr  &quot;ALC6_0&quot; &quot;CVD1_1&quot; &quot;CVD1_3&quot; &quot;CVD1_3&quot; ...
+##  $ DataValueTypeID          : chr  &quot;NMBR&quot; &quot;CRDRATE&quot; &quot;NMBR&quot; &quot;NMBR&quot; ...
+##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;OVERALL&quot; &quot;GENDER&quot; &quot;GENDER&quot; ...
+##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;OVR&quot; &quot;GENM&quot; &quot;GENF&quot; ...</code></pre></li>
+<li><p>Since, we have many categories in Data Value, we are focusing on “Number”</p>
+<p>Preprocess for ease of access</p>
+<pre><code>## [1] 18928    18</code></pre>
+<pre><code>## &#39;data.frame&#39;:    18928 obs. of  18 variables:
+##  $ YearStart                : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ YearEnd                  : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ LocationAbbr             : chr  &quot;AK&quot; &quot;AL&quot; &quot;AR&quot; &quot;AZ&quot; ...
+##  $ LocationDesc             : chr  &quot;Alaska&quot; &quot;Alabama&quot; &quot;Arkansas&quot; &quot;Arizona&quot; ...
+##  $ DataSource               : chr  &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; ...
+##  $ Topic                    : chr  &quot;Alcohol&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; ...
+##  $ Question                 : chr  &quot;Chronic liver disease mortality&quot; &quot;Mortality from coronary heart disease&quot; &quot;Mortality from coronary heart disease&quot; &quot;Mortality from total cardiovascular diseases&quot; ...
+##  $ DataValueType            : chr  &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; ...
+##  $ DataValue                : num  121 3056 2022 260 1576 ...
+##  $ StratificationCategory1  : chr  &quot;Overall&quot; &quot;Gender&quot; &quot;Gender&quot; &quot;Race/Ethnicity&quot; ...
+##  $ Stratification1          : chr  &quot;Overall&quot; &quot;Male&quot; &quot;Female&quot; &quot;Asian or Pacific Islander&quot; ...
+##  $ GeoLocation              : chr  &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-86.63186076199969 32.84057112200048)&quot; &quot;POINT (-92.27449074299966 34.74865012400045)&quot; &quot;POINT (-111.76381127699972 34.865970280000454)&quot; ...
+##  $ LocationID               : int  2 1 5 4 4 6 9 9 11 11 ...
+##  $ TopicID                  : chr  &quot;ALC&quot; &quot;CVD&quot; &quot;CVD&quot; &quot;CVD&quot; ...
+##  $ QuestionID               : chr  &quot;ALC6_0&quot; &quot;CVD1_3&quot; &quot;CVD1_3&quot; &quot;CVD1_1&quot; ...
+##  $ DataValueTypeID          : chr  &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; ...
+##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;GENDER&quot; &quot;GENDER&quot; &quot;RACE&quot; ...
+##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;GENM&quot; &quot;GENF&quot; &quot;API&quot; ...</code></pre></li>
+<li><p>Data Source Distribution</p>
+<pre><code>## [1] 8</code></pre>
+<p>There are 8 data sources contributing to the trimmed data, we will be working with the most optimal contributor.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>Since “NVSS” has most contributions, we will be using the data only from that source.</p>
+<pre><code>## [1] 10540    18</code></pre></li>
+</ol>
+</div>
+<div id="missing-value-analysis-1" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Missing value analysis<a href="data-1.html#missing-value-analysis-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/vritansh/geochronicdisease/edit/main/data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/vritansh/geochronicdisease/blob/main/data.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
