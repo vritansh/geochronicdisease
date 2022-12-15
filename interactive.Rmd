@@ -1,10 +1,14 @@
 # Interactive component
 
-<script src="https://d3js.org/d3.v7.js"></script>
+The plots shown in the previous slides point to geo spread of the disease. We need to observe the graphs to infer useful key points from them. The plots do a good work at explaining the depth of the data. However, sometimes it's curcial to know how is the data distributed in the hierarchial order. It invovles exploring the data in a top down fashion. For instance, if we consider this use case. Where user wants to understand the distribution of the chronic diseases in every state. And under that distribution understand how the mortality of each disease is distributed in gender. The below graphs solves this problem. It involves starting from the State level, then navigating to the disease distribution and finally showing the gender. It gives clear and precise undertanding of the distribution of the data. 
 
+# Interactive graph showing mortality due to chronic disases from years 2018-2021.
+
+<script src="https://d3js.org/d3.v7.js"></script>
 <button id="test" onclick="loadData()">
             Load Data
 </button>
+
 <div class ='container'  style="padding-top:1px;" id="playground">
 
 </div>
