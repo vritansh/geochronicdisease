@@ -52,6 +52,13 @@
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.1/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
 
 
 
@@ -220,7 +227,7 @@ We observe that there are several redundant columns and multiple columns with nu
 ##               100.0000000               100.0000000               100.0000000 
 ##         StratificationID3 
 ##               100.0000000</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>From the above, we can observe that we have missing values in the following columns: </br>
 Response, DataValueUnit, DataValue, DataValueAlt, DataValueFootnoteSymbol, DatavalueFootnote, LowConfidenceLimit, HighConfidenceLimit, StratificationCategory2, Stratification2, StratificationCategory3, Stratification3, GeoLocation, ResponseID, StratificationCategoryID2, StratificationID2, StratificationCategoryID3, StratificationID3.</p>
 <p>For the purpose of the further analysis we straightaway dropped columns like - </br>
@@ -247,7 +254,7 @@ Now we recalculate the number of missing values in each column to get an idea of
 ##                         0                         0</code></pre>
 <p>To get a better idea about the distribution of the missing values, we plot several types of graphs. This also help us understand patterns between different missing values, if any.
 We begin with plotting a vertical bar chart
-<img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations.</p>
 <pre><code>##                         X                 YearStart                   YearEnd 
 ##                         0                         0                         0 
@@ -265,13 +272,13 @@ From the above Bar Chart we can infer that DataValue and DataValueAlt have same 
 ##                         0                         0                         0 
 ## StratificationCategoryID1         StratificationID1 
 ##                         0                         0</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 The above graph gives a more different view to visualize the distribution of missing values. The Variable on the X-axis are the columns. We have one plot where we get an idea of the number of rows missing in each column. Then we have another plot which is giving us a pattern of the missing values in each column. The third plot gives us a more clear picture regarding the association of missing values with the row count.</p>
 <p>We calculated the percentage of missing values in the beginning but we did not do so after dropping the columns so to get a better idea of the percentage of missing values, we plot a horizontal bar chart.</p>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>As expected, the above horizontal bar chart is consistent with the first bar chart that we made. The only difference here is that we have taken the percentage instead of the number of missing values. In addition to that, the above plot is much more visually appealing and is arranged in ascending order to enable visual comparative analysis easily.</p>
 <p>So far, we had primarily been focussing on the columns. Therefore we now dive into the row level aspects. So now let is visualize the missing values in another way by plotting each row in the dataset to get further insights.<br />
-<img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 The above visualization affirms that the LowConfidenceLimit and HighConfidenceLimit are indeed correlated. In fact they are most likely the same because the rows that have missing LowConfidenceLimit also have missing HighConfidenceLimit and vice versa. A similar conclusion can be made for DataValue and DataValueAlt. GeoLocation has been consistent in the sense that it has very few missing values.</p>
 <p>Since the above plots did not really take other columns (columns without missing values) into consideration, it can be difficult to gauge the relativity between columns that do not have missing values and the columns that have missing values.
 Therefore, the below plot shows all the columns. The bars filled with blue indicates the one’s having missing values therefore they are indicated as True. False indicates that the region does not have missing values. Variables represent the columns</p>
@@ -303,7 +310,7 @@ Therefore, the below plot shows all the columns. The bars filled with blue indic
 ##  9 I         FALSE   229257
 ## 10 I         TRUE     13732
 ## # … with 19 more rows</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 </div>
 <div id="cleaning-transformation" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -354,7 +361,7 @@ Therefore, the below plot shows all the columns. The bars filled with blue indic
 <pre><code>```
 ## [1] 8
 ```</code></pre>
-<p><img src="finalproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>From the plot, it is clear that “NVSS” has most contributions, we will be using the data only from that source for our analysis.</p>
 <pre><code>```
 ## [1] 10540    18
