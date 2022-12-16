@@ -16,7 +16,7 @@ options(warn=-1)
 
 ```{r}
 #Preprocessing and converting to minifiles that will be used throughout to plot
-data = read.csv('/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv')
+data = read.csv('ChronicDiseases.csv')
 
 ```
 
@@ -71,6 +71,9 @@ write.csv(df, "eda_geo_spliced.csv", row.names=FALSE)
 
 ## Topic Distribution 
 
+This plot shows the distribution of diseases across the country,
+It indicates that the number of people affected by "Cardiovascular Disease" is significantly higher in comparison with the rest of the prevalent diseases that include "Overarching Conditions", "Chronic Obstructive Pulmonary Disease", "Diabetes", and "Chronic Kidney Disease".
+
 ```{r}
 #Using the df data above
 data <- read.csv('https://raw.githubusercontent.com/vritansh/geochronicdisease/main/data/eda_geo_spliced.csv')
@@ -80,23 +83,41 @@ data <- read.csv('https://raw.githubusercontent.com/vritansh/geochronicdisease/m
 data %>%
   group_by(Topic) %>%
   summarise(count = sum(DataValue)) %>%
-  ggplot(aes(x=fct_reorder(Topic, count,.desc = FALSE),y=count)) +
-  geom_bar(stat = "identity",fill = "purple") +
+  ggplot(aes(x=fct_reorder(Topic, count, .desc = FALSE),y=count)) +
+  geom_bar(stat = "identity",fill = "cyan3") +
   ggtitle("Topic Distribution") +
   coord_flip()+
-  xlab("") +
+  xlab("Topics") +
   theme(panel.grid.major.x = element_blank())
 ```
 
-The three diseases that we are considering are "Cardiovascular Disease", "Chronic Obstructive Pulmonary Disease" and "Diabetes".
+
 
 ```{r}
-data <- data[data$Topic %in% c("Cardiovascular Disease", "Chronic Obstructive Pulmonary Disease", "Diabetes", "Overarching Conditions", "Chronic Kidney Disease"), ]
-dim(data)
+data <- data[data$Topic %in% c("Cardiovascular Disease", "Overarching Conditions", "Chronic Obstructive Pulmonary Disease", "Diabetes", "Chronic Kidney Disease"), ]
 ``` 
+
 
 ## Gender Distribution
 
+From the plot below, we estimate the number of females and males that have been affected by a specific disease.
+
+<b>Key takeaways:</b> </br>
+1. <b><i>Cardiovascular Disease (CVD):</b></i> 
+About 2500000 males are affected by CVD whereas the number of females is around 2250000.
+</br>
+2. <b><i>Chronic Kidney Disease:</b></i> 
+There is a very slight difference between the count of the male and female which is below 500000.
+</br>
+3. <b><i>Chronic Obstructive Pulmonary Disease Disease:</b></i> 
+The ratio od male to female in this case in 1, which indicates equal number of males and females affected by this disease in the US.
+</br>
+4.<b><i>Diabetes:</b></i> 
+The males affected is close to 500000 and the number of females is slighly over 450000.
+</br>
+5. <b><i>Overarching Conditions:</b></i> 
+The male count is around 700000 and that of the female is lower than 500000.
+ 
 ```{r}
 data_distribution <- data %>% group_by(Topic, StratificationCategoryID1, Stratification1) %>% summarise(total_count=sum(DataValue),  .groups ='drop')
 
@@ -108,7 +129,7 @@ data_G <- data_distribution[data_distribution$StratificationCategoryID1 %in% c("
 
 ```{r}
 ggplot(data_G, aes(x = Stratification1, y = total_count)) +
-  geom_col(position = "dodge", fill = "green") +
+  geom_col(position = "dodge", fill = "thistle3") +
   ggtitle("Gender Distribution") +
   xlab("") +
   ylab("Count")+
@@ -142,20 +163,21 @@ plot_geospatial_us <- function(df_disease, title, legend) {
 
 ```
 
-## Geomap : Mortality due to Cardiovascular Diseases
+### Geomap : Mortality due to Cardiovascular Diseases
 The plot shows the total count of the cardiovascular diseases across multiple states. The data belongs to the below topics and has been aggregated to provide complete picture.
 
-Questions
-[1] "Mortality from coronary heart disease"          
-[2] "Mortality from total cardiovascular diseases"   
-[3] "Mortality from cerebrovascular disease (stroke)"
-[4] "Mortality from diseases of the heart"       
-[5] "Mortality from heart failure"
+<b>Questions</b>
 
-States with highest mortality 
+<ol> [1] "Mortality from coronary heart disease" </ol>        
+<ol> [2] "Mortality from total cardiovascular diseases" </ol> 
+<ol> [3] "Mortality from cerebrovascular disease (stroke)" </ol>
+<ol> [4] "Mortality from diseases of the heart" </ol>     
+<ol> [5] "Mortality from heart failure" </ol>
+
+<b>States with highest mortality:</b></br>
 Texas, New York, Illinois, California, Florida 
 
-States with lowest mortality 
+<b>States with lowest mortality:</b></br>
 Montana, North Dakota, Wyoming, South Dakota, Utah
 
 
@@ -166,20 +188,20 @@ plot_geospatial_us(df_disease = df_disease,title = "Mortality due to Cardiovascu
 ```
 
 
-## Geomap : Mortality due to Chronic Obstructive Pulmonary Disease
+### Geomap : Mortality due to Chronic Obstructive Pulmonary Disease
 The plot shows the total count of the cardiovascular diseases across multiple states. The data belongs to the below topics and has been aggregated to provide complete picture.
 
-Questions
-[1] "Mortality from coronary heart disease"          
-[2] "Mortality from total cardiovascular diseases"   
-[3] "Mortality from cerebrovascular disease (stroke)"
-[4] "Mortality from diseases of the heart"       
-[5] "Mortality from heart failure"
+<b>Questions</b>
+<ol> [1] "Mortality from coronary heart disease" </ol>         
+<ol> [2] "Mortality from total cardiovascular diseases" </ol>
+<ol> [3] "Mortality from cerebrovascular disease (stroke)" </ol>
+<ol> [4] "Mortality from diseases of the heart" </ol>     
+<ol> [5] "Mortality from heart failure" </ol>
 
-States with highest mortality 
+<b>States with highest mortality:</b> </br>
 Texas, New York, Ohio, California, Florida 
 
-States with lowest mortality 
+<b>States with lowest mortality:</b> </br>
 North Dakota, Wyoming, South Dakota, Utah, New Mexico
 
 
@@ -192,17 +214,17 @@ plot_geospatial_us(df_disease = df_disease,title = "Mortality due to Chronic Obs
 
 
 
-## Geomap : Mortality due to Diabetes
+### Geomap : Mortality due to Diabetes
 The plot shows the total count of the cardiovascular diseases across multiple states. The data belongs to the below topics and has been aggregated to provide complete picture.
 
-Questions
-[1] "Mortality with diabetic ketoacidosis reported as any listed cause of death"
-[2] "Mortality due to diabetes reported as any listed cause of death" 
+<b>Questions</b>
+<ol> [1] "Mortality with diabetic ketoacidosis reported as any listed cause of death" </ol>
+<ol> [2] "Mortality due to diabetes reported as any listed cause of death" </ol>
 
-States with highest mortality 
+<b>States with highest mortality:</b> </br>
 Texas, New York, Ohio, California, Florida 
 
-States with lowest mortality 
+<b>States with lowest mortality:</b> </br>
 Montana, North Dakota, Wyoming, South Dakota, Utah
 
 
@@ -236,7 +258,7 @@ df_spread_geo_time$YearEnd <- as.Date(as.character(df_spread_geo_time$YearEnd), 
 #Save the data to a dataset and use later on github pages.
 write.csv(df_spread_geo_time, "eda_geospatial_time.csv", row.names=FALSE)
 }
-data = read.csv('/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv')
+data = read.csv('ChronicDiseases.csv')
 save_geospatial_time(data)
 
 ```
@@ -245,14 +267,13 @@ save_geospatial_time(data)
 ## Timeseries Faceted Geoplot
 In this plot we're analyzing if the mortality chronic diseases have increased in the past decade. For this we've considerered the data for one decade on the top five states from above. This would give us insights on the health care and how people have evolved. It can be helpful in predicting useful information regarding infrastructure of a state.
 
-Key Trends 
-1. Cardiovascular Disease
-  Except for New York state, for all the states the mortality caused by cardiovascular disease has increased. 
-
-2. Diabetes in Texas
-  As we can observe from the graph the mortality due to diabetes in Texas was ~69,000 in the year 2017, It increased close to 116,000 in 2018 and then took a dip in 2019 to ~72,000. 
-   
-3. Data consistency for Diabetes Data
+<b>Key Trends:</b>
+</br>
+1. <b><i>Cardiovascular Disease</i></b>
+  Except for New York state, for all the states the mortality caused by cardiovascular disease has increased. </br>
+2. <b><i>Diabetes in Texas</i></b>
+  As we can observe from the graph the mortality due to diabetes in Texas was ~69,000 in the year 2017, It increased close to 116,000 in 2018 and then took a dip in 2019 to ~72,000. </br>
+3. <b><i>Data consistency for Diabetes Data</i></b>
  As we observed in above point the data trend for diabetes data similar across other states as well. It can be accounted to the way data was collected. And this dip is only seen from 2017 to 2019. This trend is interesting as it could mean that from the years 2017 to 2019 information is either with errors or in actual these states had a dip in the mortality due to diabetes. 
 
 ```{r}
