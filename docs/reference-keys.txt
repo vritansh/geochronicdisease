@@ -18,3 +18,5 @@ timeseries-faceted-geoplot
 interactive-component
 conclusion
 interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021.
+interactive-graph-showing-hierarchies-state---chronic-diseases---gender-distribution
+exploring-hierarchies-click-on-bars-to-explore
