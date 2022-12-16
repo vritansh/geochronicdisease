@@ -11,11 +11,17 @@ Link to the complete proposal - https://vritansh.github.io/geochronicdisease/ind
 
 <h4>References</h4>
 
-[1] https://www.cdc.gov/chronicdisease/center/index.htm#.
-[2] https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi.
-[3] https://opendefinition.org/licenses/odc-odbl/.
-[4] https://www.cdc.gov/mmwr/pdf/rr/rr6401.pdf.
+[1] https://www.cdc.gov/chronicdisease/center/index.htm#
+
+[2] https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi
+
+[3] https://opendefinition.org/licenses/odc-odbl/
+
+[4] https://www.cdc.gov/mmwr/pdf/rr/rr6401.pdf
+
 [5] https://edav.info/index.html
+
 [6] https://stackoverflow.com/questions/40862260/d3-getting-text-on-the-top-of-rectangles-in-vertical-bar-chart
+
 [7] https://www.tutorialsteacher.com/d3js/create-bar-chart-using-d3js
 
