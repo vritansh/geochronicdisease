@@ -1,78 +1,3 @@
-
-
-```{r}
-
-#data = read.csv(file = 'CDC.csv') 
-
-#df <- data[data$YearStart %in% c('2018', '2019', '2020','2021'), ]
-
-#drop <- c("X")
-#df = df[,!(names(df) %in% drop)]
-
-#tidydf <- df %>% 
-#  rownames_to_column("id") %>% 
-#  gather(key, value, -id) %>% 
-#  mutate(missing = ifelse(is.na(value), "yes", "no"))
-
-#dat2 <- read.csv("CDC.csv", header=T, na.strings=c("","NA"))
-#sapply(dat2, function(x) sum(is.na(x)))
-#df <- dat2[dat2$YearStart %in% c('2018', '2019', '2020','2021'), ]
-#missing.values <- df %>%
-#  gather(key = "key", value = "val") %>%
-#  mutate(is.missing = is.na(val)) %>%
-#  group_by(key, is.missing) %>%
-#  summarise(num.missing = n()) %>%
-#  filter(is.missing==T) %>%
-#  select(-is.missing) %>%
-#  arrange(desc(num.missing)) 
-```
-```{r}
-#ggplot() + geom_bar(data = missing.values, aes(x=key, y=num.missing), stat = 'identity')+labs(x='variable', y="number of missing values", title='Number of missing values') + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + coord_cartesian(ylim=c(0,100000)) + scale_y_continuous(breaks=seq(0,100000,12500))
-```
-```{r}
-#library(redav)
-#plot_missing(dat2, percent = FALSE)
-```
-```{r}
-#row.plot <- df %>%
-#  mutate(id = row_number()) %>%
-#  gather(-id, key = "key", value = "val") %>%
-#  mutate(isna = is.na(val)) %>%
-#  ggplot(aes(key, id, fill = isna)) +
-#    geom_raster(alpha=0.8) +
-#    scale_fill_manual(name = "",
-#        values = c('steelblue', 'tomato3'),
-#        labels = c("Present", "Missing")) +
-#    scale_x_discrete(limits = levels) +
-#    labs(x = "Variable",
-#           y = "Row Number", title = "Missing values in rows") +
-#    coord_flip()
-
-#row.plot
-```
-```{r}
-#df  %>%
-#  summarise_all(list(~is.na(.)))%>%
-#  pivot_longer(everything(),
-#               names_to = "variables", values_to="missing")
-
-#df  %>%
-#  summarise_all(list(~is.na(.)))%>%
-#  pivot_longer(everything(),
-#      names_to = "variables", values_to="missing") %>%
-#  count(variables, missing)
-
-#df  %>%
-#  summarise_all(list(~is.na(.)))%>%
-#  pivot_longer(everything(),
-#        names_to = "variables", values_to="missing") %>%
-#  count(variables, missing) %>%
-#  ggplot(aes(y=variables,x=n,fill=missing))+
-#  geom_col()
-```
-
-
-
 # Data
 
 ## Sources
@@ -106,33 +31,198 @@ str(data)
 
 The attributes that we focus on for this project are:
 
-<li>YearStart : Year in which the chronic disease was recorded.</li> 
-<li>LocationAbbr : State associated with the chronic disease.</li> 
-<li>DataSource : Contributors for the survey conducted to record the chronic diseases.</li> 
-<li>Topic : Name of the chronic disease.</li> 
-<li>Question : Indicators associated with a chronic disease, for example - Mortality, Binge Consumption, etc,.</li> 
-<li>DataValue : Population that have been affected by a specific indicator.</li> 
-<li>Stratification1 : Describes the gender or race of an individual.</li> 
-<li>GeoLocation : The latitude and longitude points at which the data was collected.</li>  
+<li><b>YearStart</b> : Year in which the chronic disease was recorded.</li> 
+<li><b>LocationAbbr</b> : State associated with the chronic disease.</li> 
+<li><b>DataSource</b> : Contributors for the survey conducted to record the chronic diseases.</li> 
+<li><b>Topic</b> : Name of the chronic disease.</li> 
+<li><b>Question</b> : Indicators associated with a chronic disease, for example - Mortality, Binge Consumption, etc,.</li> 
+<li><b>DataValue</b> : Population that have been affected by a specific indicator.</li> 
+<li><b>Stratification1</b> : Describes the gender or race of an individual.</li> 
+<li><b>GeoLocation</b> : The latitude and longitude points at which the data was collected.</li>  
 
 </br>
 We observe that there are several redundant columns and multiple columns with null values. Since we can't work directly with this dataset, we analyze the missing values and then transform the data into it's usable form.
 
+
 ## Missing value analysis
 
-We need to check whether the data has NA values or in some cases just a null string.
+Now to begin with missing value analysis we first check the percentage of missing values in the initial dataset. Please note here that we are referring to the initial dataset as the original dataset with only the years 2018, 2019, 2020, 2021. Sine there were many null string values in the dataset we converted them to NA before calculating the percentage of missing values in each column.
 
 ```{r}
-NA_count <- colSums(is.na(data))
-NA_count
+data1 = data 
+
+df5 <- data1[data1$YearStart %in% c('2018', '2019', '2020','2021'), ]
+
+df5[df5 == ''] <- NA
+
+drop <- c("X")
+df5 = df5[,!(names(df5) %in% drop)]
+(colMeans(is.na(df5)))*100
+```
+```{r}
+data1 = data
+
+df <- data1[data1$YearStart %in% c('2018', '2019', '2020','2021'), ]
+
+df[df == ''] <- NA
+
+drop <- c("X")
+df = df[,!(names(df) %in% drop)]
+
+missing.values <- df %>%
+  gather(key = "key", value = "val") %>%
+  mutate(isna = is.na(val)) %>%
+  group_by(key) %>%
+  mutate(total = n()) %>%
+  group_by(key, total, isna) %>%
+  summarise(num.isna = n()) %>%
+  mutate(pct = num.isna / total * 100)
+
+levels <-
+    (missing.values  %>% filter(isna == T) %>% arrange(desc(pct)))$key
+
+percentage.plot <- missing.values %>%
+      ggplot() +
+        geom_bar(aes(x = reorder(key, desc(pct)), 
+                     y = pct, fill=isna), 
+                 stat = 'identity', alpha=0.8) +
+      scale_x_discrete(limits = levels) +
+      scale_fill_manual(name = "", 
+                        values = c('steelblue', 'tomato3'), labels = c("Present", "Missing")) +
+      coord_flip() +
+      labs(title = "Percentage of missing values", x =
+             'Variable', y = "% of missing values")
+
+percentage.plot
 ```
 
---- one plot to 100% missing values ---
 
-it is clear that the columns - "Response", "DataValueAlt", "LowConfidenceLimit", "HighConfidenceLimit", "StratificationCategory2", "Stratification2", "StratificationCategory3", "Stratification3", "ResponseID", 
+From the above, we can observe that we have missing values in the following columns: </br>
+Response, DataValueUnit, DataValue, DataValueAlt, DataValueFootnoteSymbol, DatavalueFootnote, LowConfidenceLimit, HighConfidenceLimit,  StratificationCategory2, Stratification2,  StratificationCategory3, Stratification3, GeoLocation, ResponseID, StratificationCategoryID2,  StratificationID2, StratificationCategoryID3, StratificationID3. 
+
+For the purpose of the further analysis we straightaway dropped columns like - </br>
+Response, StratificationCategory2, Stratification2,  StratificationCategory3, Stratification3, ResponseID, StratificationCategoryID2, StratificationID2, StratificationCategoryID3, StratificationID3. We did so as they had 100% of the values missing so keeping them would only add more noise to our plots as they serve no useful meaning. 
+</br>
+In addition to the above, we also dropped the colummns: DataValueFootnoteSymbol, DatavalueFootnote as these columns have significant (~66%) number of missing values and served no useful purpose for our analysis. 
+
+</br>
+Now we recalculate the number of missing values in each column to get an idea of what we have after the above transformations. 
+
+```{r}
+
+data2 = read.csv(file = 'CDC.csv') 
+
+df <- data2[data2$YearStart %in% c('2018', '2019', '2020','2021'), ]
+
+drop <- c("X")
+df = df[,!(names(df) %in% drop)]
+
+tidydf <- df %>% 
+  rownames_to_column("id") %>% 
+  gather(key, value, -id) %>% 
+  mutate(missing = ifelse(is.na(value), "yes", "no"))
+
+dat2 <- read.csv("CDC.csv", header=T, na.strings=c("","NA"))
+sapply(dat2, function(x) sum(is.na(x)))
+df <- dat2[dat2$YearStart %in% c('2018', '2019', '2020','2021'), ]
+missing.values <- df %>%
+  gather(key = "key", value = "val") %>%
+  mutate(is.missing = is.na(val)) %>%
+  group_by(key, is.missing) %>%
+  summarise(num.missing = n()) %>%
+  filter(is.missing==T) %>%
+  select(-is.missing) %>%
+  arrange(desc(num.missing)) 
+```
+
+To get a better idea about the distribution of the missing values, we plot several types of graphs. This also help us understand patterns between different missing values, if any. 
+We begin with plotting a vertical bar chart 
+```{r}
+ggplot() + geom_bar(data = missing.values, aes(x=key, y=num.missing), stat = 'identity')+labs(x='columns', y="number of missing values", title='Bar Chart of the number of missing values') + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + coord_cartesian(ylim=c(0,100000)) + scale_y_continuous(breaks=seq(0,100000,12500))
+```
+From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations. 
+```{r}
+library(redav)
+plot_missing(df, percent = FALSE)
+```
+The above graph gives a more different view to visualize the distribution of missing values. The Variable on the X-axis are the columns. We have one plot where we get an idea of the number of rows missing in each column. Then we have another plot which is giving us a pattern of the missing values in each column. The third plot gives us a more clear picture regarding the association of missing values with the row count. 
+
+We calculated the percentage of missing values in the beginning but we did not do so after dropping the columns so to get a better idea of the percentage of missing values, we plot a horizontal bar chart.
+
+```{r}
+missing.values <- df %>%
+  gather(key = "key", value = "val") %>%
+  mutate(isna = is.na(val)) %>%
+  group_by(key) %>%
+  mutate(total = n()) %>%
+  group_by(key, total, isna) %>%
+  summarise(num.isna = n()) %>%
+  mutate(pct = num.isna / total * 100)
+
+levels <-
+    (missing.values  %>% filter(isna == T) %>% arrange(desc(pct)))$key
+
+percentage.plot <- missing.values %>%
+      ggplot() +
+        geom_bar(aes(x = reorder(key, desc(pct)), 
+                     y = pct, fill=isna), 
+                 stat = 'identity', alpha=0.8) +
+      scale_x_discrete(limits = levels) +
+      scale_fill_manual(name = "", 
+                        values = c('steelblue', 'tomato3'), labels = c("Present", "Missing")) +
+      coord_flip() +
+      labs(title = "Percentage of missing values", x =
+             'Variable', y = "% of missing values")
+
+percentage.plot
+```
+
+As expected, the above horizontal bar chart is consistent with the first bar chart that we made. The only difference here is that we have taken the percentage instead of the number of missing values. In addition to that, the above plot is much more visually appealing and is arranged in ascending order to enable visual comparative analysis easily. 
 
 
------- Add Ritvik's Code --------
+So far, we had primarily been focussing on the columns. Therefore we now dive into the row level aspects. So now let is visualize the missing values in another way by plotting each row in the dataset to get further insights.  
+```{r}
+row.plot <- df %>%
+  mutate(id = row_number()) %>%
+  gather(-id, key = "key", value = "val") %>%
+  mutate(isna = is.na(val)) %>%
+  ggplot(aes(key, id, fill = isna)) +
+    geom_raster(alpha=0.8) +
+    scale_fill_manual(name = "",
+        values = c('steelblue', 'tomato3'),
+        labels = c("Present", "Missing")) +
+    scale_x_discrete(limits = levels) +
+    labs(x = "Columns",
+           y = "Row Number", title = "Missing values in rows") +
+    coord_flip()
+
+row.plot
+```
+The above visualization affirms that the LowConfidenceLimit and HighConfidenceLimit are indeed correlated. In fact they are most likely the same because the rows that have missing LowConfidenceLimit also have missing HighConfidenceLimit and vice versa. A similar conclusion can be made for DataValue and DataValueAlt. GeoLocation has been consistent in the sense that it has very few missing values.
+
+
+Since the above plots did not really take other columns (columns without missing values) into consideration, it can be difficult to gauge the relativity between columns that do not have missing values and the columns that have missing values. 
+Therefore, the below plot shows all the columns. The bars filled with blue indicates the one's having missing values therefore they are indicated as True. False indicates that the region does not have missing values. Variables represent the columns 
+```{r}
+df  %>%
+  summarise_all(list(~is.na(.)))%>%
+  pivot_longer(everything(),
+               names_to = "variables", values_to="missing")
+
+df  %>%
+  summarise_all(list(~is.na(.)))%>%
+  pivot_longer(everything(),
+      names_to = "variables", values_to="missing") %>%
+  count(variables, missing)
+
+df  %>%
+  summarise_all(list(~is.na(.)))%>%
+  pivot_longer(everything(),
+        names_to = "variables", values_to="missing") %>%
+  count(variables, missing) %>%
+  ggplot(aes(y=variables,x=n,fill=missing))+
+  geom_col()
+```
 
 ## Cleaning / transformation
 
@@ -178,8 +268,7 @@ There are 8 data sources contributing to the collection of chronic data after pr
       ggtitle("DataSource Distribution") +
       coord_flip()+
       xlab("DataSource") + 
-      theme(panel.grid.major.x = element_blank())
-
+      theme(panel.grid.major.x = element_blank()) 
     ```
 
 From the plot, it is clear that "NVSS" has most contributions, we will be using the data only from that source for our analysis. 
@@ -190,5 +279,7 @@ From the plot, it is clear that "NVSS" has most contributions, we will be using 
     str(data)
     ```
 
-The updated data after cleaning and considering the optimal attributes has 10540 entries and 18 attributes that constitutes our primary 8 featurese along with 10 supporting features for analysis.
+The updated data after cleaning and considering the optimal attributes has 10540 entries and 18 attributes that constitutes our primary 8 features along with 10 supporting features for analysis.
+
+
 

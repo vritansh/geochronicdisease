@@ -89,10 +89,17 @@
 <ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#topic-distribution"><i class="fa fa-check"></i><b>4.1</b> Topic Distribution</a></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#gender-distribution"><i class="fa fa-check"></i><b>4.2</b> Gender Distribution</a></li>
-<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#graph-showing-the-top-cardiovascular-diseases"><i class="fa fa-check"></i><b>4.3</b> Graph Showing the Top Cardiovascular Diseases</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#graph-showing-the-top-cardiovascular-diseases"><i class="fa fa-check"></i><b>4.3</b> Graph Showing the Top Cardiovascular Diseases</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="results.html"><a href="results.html#geomap-mortality-due-to-cardiovascular-diseases"><i class="fa fa-check"></i><b>4.3.1</b> Geomap : Mortality due to Cardiovascular Diseases</a></li>
+<li class="chapter" data-level="4.3.2" data-path="results.html"><a href="results.html#geomap-mortality-due-to-chronic-obstructive-pulmonary-disease"><i class="fa fa-check"></i><b>4.3.2</b> Geomap : Mortality due to Chronic Obstructive Pulmonary Disease</a></li>
+<li class="chapter" data-level="4.3.3" data-path="results.html"><a href="results.html#geomap-mortality-due-to-diabetes"><i class="fa fa-check"></i><b>4.3.3</b> Geomap : Mortality due to Diabetes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="results.html"><a href="results.html#timeseries-faceted-geoplot"><i class="fa fa-check"></i><b>4.4</b> Timeseries Faceted Geoplot</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
-<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
+<li class="chapter" data-level="6" data-path="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><a href="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><i class="fa fa-check"></i><b>6</b> Interactive graph showing mortality due to chronic disases from years 2018-2021.</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -160,62 +167,127 @@ The dataset was created on 10th November 2020 and was last modified on 21st Apri
 ##  $ StratificationID3        : logi  NA NA NA NA NA NA ...</code></pre>
 <p>The attributes that we focus on for this project are:</p>
 <li>
-YearStart : Year in which the chronic disease was recorded.
+<b>YearStart</b> : Year in which the chronic disease was recorded.
 </li>
 <li>
-LocationAbbr : State associated with the chronic disease.
+<b>LocationAbbr</b> : State associated with the chronic disease.
 </li>
 <li>
-DataSource : Contributors for the survey conducted to record the chronic diseases.
+<b>DataSource</b> : Contributors for the survey conducted to record the chronic diseases.
 </li>
 <li>
-Topic : Name of the chronic disease.
+<b>Topic</b> : Name of the chronic disease.
 </li>
 <li>
-Question : Indicators associated with a chronic disease, for example - Mortality, Binge Consumption, etc,.
+<b>Question</b> : Indicators associated with a chronic disease, for example - Mortality, Binge Consumption, etc,.
 </li>
 <li>
-DataValue : Population that have been affected by a specific indicator.
+<b>DataValue</b> : Population that have been affected by a specific indicator.
 </li>
 <li>
-Stratification1 : Describes the gender or race of an individual.
+<b>Stratification1</b> : Describes the gender or race of an individual.
 </li>
 <li>
-GeoLocation : The latitude and longitude points at which the data was collected.
+<b>GeoLocation</b> : The latitude and longitude points at which the data was collected.
 </li>
 <p></br>
 We observe that there are several redundant columns and multiple columns with null values. Since we can’t work directly with this dataset, we analyze the missing values and then transform the data into it’s usable form.</p>
 </div>
 <div id="missing-value-analysis" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We need to check whether the data has NA values or in some cases just a null string.</p>
+<p>Now to begin with missing value analysis we first check the percentage of missing values in the initial dataset. Please note here that we are referring to the initial dataset as the original dataset with only the years 2018, 2019, 2020, 2021. Sine there were many null string values in the dataset we converted them to NA before calculating the percentage of missing values in each column.</p>
 <pre><code>##                 YearStart                   YearEnd              LocationAbbr 
-##                         0                         0                         0 
+##                 0.0000000                 0.0000000                 0.0000000 
 ##              LocationDesc                DataSource                     Topic 
-##                         0                         0                         0 
+##                 0.0000000                 0.0000000                 0.0000000 
 ##                  Question                  Response             DataValueUnit 
-##                         0                   1082328                         0 
+##                 0.0000000               100.0000000                 5.6512846 
 ##             DataValueType                 DataValue              DataValueAlt 
-##                         0                         0                    355136 
+##                 0.0000000                32.5825449                32.8883200 
 ##   DataValueFootnoteSymbol         DatavalueFootnote        LowConfidenceLimit 
-##                         0                         0                    465077 
+##                66.4704987                66.4704987                39.1536242 
 ##       HighConfidenceLimit   StratificationCategory1           Stratification1 
-##                    465077                         0                         0 
+##                39.1536242                 0.0000000                 0.0000000 
 ##   StratificationCategory2           Stratification2   StratificationCategory3 
-##                   1082328                   1082328                   1082328 
+##               100.0000000               100.0000000               100.0000000 
 ##           Stratification3               GeoLocation                ResponseID 
-##                   1082328                         0                   1082328 
+##               100.0000000                 0.6938586               100.0000000 
 ##                LocationID                   TopicID                QuestionID 
-##                         0                         0                         0 
+##                 0.0000000                 0.0000000                 0.0000000 
 ##           DataValueTypeID StratificationCategoryID1         StratificationID1 
-##                         0                         0                         0 
+##                 0.0000000                 0.0000000                 0.0000000 
 ## StratificationCategoryID2         StratificationID2 StratificationCategoryID3 
-##                   1082328                   1082328                   1082328 
+##               100.0000000               100.0000000               100.0000000 
 ##         StratificationID3 
-##                   1082328</code></pre>
-<p>— one plot to 100% missing values —</p>
-<p>it is clear that the columns - “Response”, “DataValueAlt”, “LowConfidenceLimit”, “HighConfidenceLimit”, “StratificationCategory2”, “Stratification2”, “StratificationCategory3”, “Stratification3”, “ResponseID”,</p>
-<p>—— Add Ritvik’s Code ——–</p>
+##               100.0000000</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>From the above, we can observe that we have missing values in the following columns: </br>
+Response, DataValueUnit, DataValue, DataValueAlt, DataValueFootnoteSymbol, DatavalueFootnote, LowConfidenceLimit, HighConfidenceLimit, StratificationCategory2, Stratification2, StratificationCategory3, Stratification3, GeoLocation, ResponseID, StratificationCategoryID2, StratificationID2, StratificationCategoryID3, StratificationID3.</p>
+<p>For the purpose of the further analysis we straightaway dropped columns like - </br>
+Response, StratificationCategory2, Stratification2, StratificationCategory3, Stratification3, ResponseID, StratificationCategoryID2, StratificationID2, StratificationCategoryID3, StratificationID3. We did so as they had 100% of the values missing so keeping them would only add more noise to our plots as they serve no useful meaning.
+</br>
+In addition to the above, we also dropped the colummns: DataValueFootnoteSymbol, DatavalueFootnote as these columns have significant (~66%) number of missing values and served no useful purpose for our analysis.</p>
+<p></br>
+Now we recalculate the number of missing values in each column to get an idea of what we have after the above transformations.</p>
+<pre><code>##                         X                 YearStart                   YearEnd 
+##                         0                         0                         0 
+##              LocationAbbr              LocationDesc                DataSource 
+##                         0                         0                         0 
+##                     Topic                  Question             DataValueUnit 
+##                         0                         0                    139390 
+##             DataValueType                 DataValue              DataValueAlt 
+##                         0                    353093                    355136 
+##        LowConfidenceLimit       HighConfidenceLimit   StratificationCategory1 
+##                    465077                    465077                         0 
+##           Stratification1               GeoLocation                LocationID 
+##                         0                      9196                         0 
+##                   TopicID                QuestionID           DataValueTypeID 
+##                         0                         0                         0 
+## StratificationCategoryID1         StratificationID1 
+##                         0                         0</code></pre>
+<p>To get a better idea about the distribution of the missing values, we plot several types of graphs. This also help us understand patterns between different missing values, if any.
+We begin with plotting a vertical bar chart
+<img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations.
+<img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+The above graph gives a more different view to visualize the distribution of missing values. The Variable on the X-axis are the columns. We have one plot where we get an idea of the number of rows missing in each column. Then we have another plot which is giving us a pattern of the missing values in each column. The third plot gives us a more clear picture regarding the association of missing values with the row count.</p>
+<p>We calculated the percentage of missing values in the beginning but we did not do so after dropping the columns so to get a better idea of the percentage of missing values, we plot a horizontal bar chart.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>As expected, the above horizontal bar chart is consistent with the first bar chart that we made. The only difference here is that we have taken the percentage instead of the number of missing values. In addition to that, the above plot is much more visually appealing and is arranged in ascending order to enable visual comparative analysis easily.</p>
+<p>So far, we had primarily been focussing on the columns. Therefore we now dive into the row level aspects. So now let is visualize the missing values in another way by plotting each row in the dataset to get further insights.<br />
+<img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+The above visualization affirms that the LowConfidenceLimit and HighConfidenceLimit are indeed correlated. In fact they are most likely the same because the rows that have missing LowConfidenceLimit also have missing HighConfidenceLimit and vice versa. A similar conclusion can be made for DataValue and DataValueAlt. GeoLocation has been consistent in the sense that it has very few missing values.</p>
+<p>Since the above plots did not really take other columns (columns without missing values) into consideration, it can be difficult to gauge the relativity between columns that do not have missing values and the columns that have missing values.
+Therefore, the below plot shows all the columns. The bars filled with blue indicates the one’s having missing values therefore they are indicated as True. False indicates that the region does not have missing values. Variables represent the columns</p>
+<pre><code>## # A tibble: 5,588,747 × 2
+##    variables     missing
+##    &lt;chr&gt;         &lt;lgl&gt;  
+##  1 X             FALSE  
+##  2 YearStart     FALSE  
+##  3 YearEnd       FALSE  
+##  4 LocationAbbr  FALSE  
+##  5 LocationDesc  FALSE  
+##  6 DataSource    FALSE  
+##  7 Topic         FALSE  
+##  8 Question      FALSE  
+##  9 DataValueUnit TRUE   
+## 10 DataValueType FALSE  
+## # … with 5,588,737 more rows</code></pre>
+<pre><code>## # A tibble: 29 × 3
+##    variables       missing      n
+##    &lt;chr&gt;           &lt;lgl&gt;    &lt;int&gt;
+##  1 DataSource      FALSE   242989
+##  2 DataValue       FALSE   163817
+##  3 DataValue       TRUE     79172
+##  4 DataValueAlt    FALSE   163074
+##  5 DataValueAlt    TRUE     79915
+##  6 DataValueType   FALSE   242989
+##  7 DataValueTypeID FALSE   242989
+##  8 DataValueUnit   FALSE   229257
+##  9 DataValueUnit   TRUE     13732
+## 10 GeoLocation     FALSE   241303
+## # … with 19 more rows</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 <div id="cleaning-transformation" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -267,7 +339,7 @@ We observe that there are several redundant columns and multiple columns with nu
 ## [1] 8
 ```
 
-&lt;img src=&quot;finalproj_files/figure-html/unnamed-chunk-17-1.png&quot; width=&quot;672&quot; /&gt;</code></pre>
+&lt;img src=&quot;finalproj_files/figure-html/unnamed-chunk-19-1.png&quot; width=&quot;672&quot; /&gt;</code></pre>
 <p>From the plot, it is clear that “NVSS” has most contributions, we will be using the data only from that source for our analysis.</p>
 <pre><code>```
 ## [1] 10540    18
