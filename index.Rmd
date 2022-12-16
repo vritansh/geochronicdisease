@@ -1,6 +1,6 @@
 --- 
 title: "Geospatial Analysis of Chronic Diseases"
-author: "Ritvik Khandelwal, Vritansh Kamal, Maria Pratyusha"
+author: "Vritansh Kamal (vk2501),  Ritvik Khandelwal (rk3213), Maria Pratyusha (mp4145)"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 ---
