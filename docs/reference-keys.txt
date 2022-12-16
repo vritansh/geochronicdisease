@@ -5,8 +5,8 @@ data-availability
 references
 data
 sources
-cleaning-transformation
 missing-value-analysis
+cleaning-transformation
 results
 topic-distribution
 gender-distribution
@@ -16,7 +16,7 @@ geomap-mortality-due-to-chronic-obstructive-pulmonary-disease
 geomap-mortality-due-to-diabetes
 timeseries-faceted-geoplot
 interactive-component
-conclusion
 interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021.
 interactive-graph-showing-hierarchies-state---chronic-diseases---gender-distribution
 exploring-hierarchies-click-on-bars-to-explore
+conclusion

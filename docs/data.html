@@ -20,7 +20,7 @@
   
   
 
-<meta name="author" content="Ritvik Khandelwal, Vritansh Kamal, Maria Pratyusha" />
+<meta name="author" content="Vritansh Kamal (vk2501), Maria Pratyusha (mp4145), Ritvik Khandelwal (rk3213)" />
 
 
 <meta name="date" content="2022-12-15" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="proposal.html"/>
-<link rel="next" href="data-1.html"/>
+<link rel="next" href="results.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -82,17 +82,23 @@
 <li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#sources"><i class="fa fa-check"></i><b>3.1</b> Sources</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
-<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.2</b> Missing value analysis</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.3</b> Cleaning / transformation</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="data-1.html"><a href="data-1.html"><i class="fa fa-check"></i><b>4</b> Data</a>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="data-1.html"><a href="data-1.html#sources-1"><i class="fa fa-check"></i><b>4.1</b> Sources</a></li>
-<li class="chapter" data-level="4.2" data-path="data-1.html"><a href="data-1.html#cleaning-transformation-1"><i class="fa fa-check"></i><b>4.2</b> Cleaning / transformation</a></li>
-<li class="chapter" data-level="4.3" data-path="data-1.html"><a href="data-1.html#missing-value-analysis-1"><i class="fa fa-check"></i><b>4.3</b> Missing value analysis</a></li>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#topic-distribution"><i class="fa fa-check"></i><b>4.1</b> Topic Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#gender-distribution"><i class="fa fa-check"></i><b>4.2</b> Gender Distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#graph-showing-the-top-cardiovascular-diseases"><i class="fa fa-check"></i><b>4.3</b> Graph Showing the Top Cardiovascular Diseases</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="results.html"><a href="results.html#geomap-mortality-due-to-cardiovascular-diseases"><i class="fa fa-check"></i><b>4.3.1</b> Geomap : Mortality due to Cardiovascular Diseases</a></li>
+<li class="chapter" data-level="4.3.2" data-path="results.html"><a href="results.html#geomap-mortality-due-to-chronic-obstructive-pulmonary-disease"><i class="fa fa-check"></i><b>4.3.2</b> Geomap : Mortality due to Chronic Obstructive Pulmonary Disease</a></li>
+<li class="chapter" data-level="4.3.3" data-path="results.html"><a href="results.html#geomap-mortality-due-to-diabetes"><i class="fa fa-check"></i><b>4.3.3</b> Geomap : Mortality due to Diabetes</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>5</b> Results</a></li>
-<li class="chapter" data-level="6" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>6</b> Interactive component</a></li>
+<li class="chapter" data-level="4.4" data-path="results.html"><a href="results.html#timeseries-faceted-geoplot"><i class="fa fa-check"></i><b>4.4</b> Timeseries Faceted Geoplot</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
+<li class="chapter" data-level="6" data-path="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><a href="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><i class="fa fa-check"></i><b>6</b> Interactive graph showing mortality due to chronic disases from years 2018-2021.</a></li>
 <li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -117,12 +123,251 @@
 <h1><span class="header-section-number">Chapter 3</span> Data<a href="data.html#data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="sources" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Sources<a href="data.html#sources" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The dataset used in this project is borrowed from the division of population health in <b>Center for Disease Control and Prevention (CDC)</b> - (<a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi" class="uri">https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi</a>).
+The dataset was created on 10th November 2020 and was last modified on 21st April 2022.</p>
+<p>It contains 1082328 entries, where there are 34 attributes contributing to the observance of the chronic disease in the United States of America.</p>
+<pre><code>```
+## [1] 1082328      34
+```</code></pre>
+<p>Let’s have a look at the structure of the dataset in order to comprehend the varied traits that help define the data.</p>
+<pre><code>## &#39;data.frame&#39;:    1082328 obs. of  34 variables:
+##  $ YearStart                : int  2010 2017 2018 2011 2012 2015 2018 2010 2014 2016 ...
+##  $ YearEnd                  : int  2010 2017 2018 2011 2012 2015 2018 2010 2014 2016 ...
+##  $ LocationAbbr             : chr  &quot;AK&quot; &quot;AK&quot; &quot;AK&quot; &quot;AK&quot; ...
+##  $ LocationDesc             : chr  &quot;Alaska&quot; &quot;Alaska&quot; &quot;Alaska&quot; &quot;Alaska&quot; ...
+##  $ DataSource               : chr  &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; ...
+##  $ Topic                    : chr  &quot;Alcohol&quot; &quot;Alcohol&quot; &quot;Alcohol&quot; &quot;Chronic Kidney Disease&quot; ...
+##  $ Question                 : chr  &quot;Chronic liver disease mortality&quot; &quot;Chronic liver disease mortality&quot; &quot;Chronic liver disease mortality&quot; &quot;Mortality with end-stage renal disease&quot; ...
+##  $ Response                 : logi  NA NA NA NA NA NA ...
+##  $ DataValueUnit            : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ DataValueType            : chr  &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; ...
+##  $ DataValue                : chr  &quot;70&quot; &quot;121&quot; &quot;121&quot; &quot;221&quot; ...
+##  $ DataValueAlt             : num  70 121 121 221 234 ...
+##  $ DataValueFootnoteSymbol  : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ DatavalueFootnote        : chr  &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; ...
+##  $ LowConfidenceLimit       : num  NA NA NA NA NA ...
+##  $ HighConfidenceLimit      : num  NA NA NA NA NA ...
+##  $ StratificationCategory1  : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Overall&quot; &quot;Race/Ethnicity&quot; ...
+##  $ Stratification1          : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Overall&quot; &quot;White, non-Hispanic&quot; ...
+##  $ StratificationCategory2  : logi  NA NA NA NA NA NA ...
+##  $ Stratification2          : logi  NA NA NA NA NA NA ...
+##  $ StratificationCategory3  : logi  NA NA NA NA NA NA ...
+##  $ Stratification3          : logi  NA NA NA NA NA NA ...
+##  $ GeoLocation              : chr  &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; ...
+##  $ ResponseID               : logi  NA NA NA NA NA NA ...
+##  $ LocationID               : int  2 2 2 2 2 2 2 2 2 2 ...
+##  $ TopicID                  : chr  &quot;ALC&quot; &quot;ALC&quot; &quot;ALC&quot; &quot;CKD&quot; ...
+##  $ QuestionID               : chr  &quot;ALC6_0&quot; &quot;ALC6_0&quot; &quot;ALC6_0&quot; &quot;CKD1_0&quot; ...
+##  $ DataValueTypeID          : chr  &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; ...
+##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;OVERALL&quot; &quot;OVERALL&quot; &quot;RACE&quot; ...
+##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;OVR&quot; &quot;OVR&quot; &quot;WHT&quot; ...
+##  $ StratificationCategoryID2: logi  NA NA NA NA NA NA ...
+##  $ StratificationID2        : logi  NA NA NA NA NA NA ...
+##  $ StratificationCategoryID3: logi  NA NA NA NA NA NA ...
+##  $ StratificationID3        : logi  NA NA NA NA NA NA ...</code></pre>
+<p>The attributes that we focus on for this project are:</p>
+<li>
+<b>YearStart</b> : Year in which the chronic disease was recorded.
+</li>
+<li>
+<b>LocationAbbr</b> : State associated with the chronic disease.
+</li>
+<li>
+<b>DataSource</b> : Contributors for the survey conducted to record the chronic diseases.
+</li>
+<li>
+<b>Topic</b> : Name of the chronic disease.
+</li>
+<li>
+<b>Question</b> : Indicators associated with a chronic disease, for example - Mortality, Binge Consumption, etc,.
+</li>
+<li>
+<b>DataValue</b> : Population that have been affected by a specific indicator.
+</li>
+<li>
+<b>Stratification1</b> : Describes the gender or race of an individual.
+</li>
+<li>
+<b>GeoLocation</b> : The latitude and longitude points at which the data was collected.
+</li>
+<p></br>
+We observe that there are several redundant columns and multiple columns with null values. Since we can’t work directly with this dataset, we analyze the missing values and then transform the data into it’s usable form.</p>
 </div>
-<div id="cleaning-transformation" class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="missing-value-analysis" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Now to begin with missing value analysis we first check the percentage of missing values in the initial dataset. Please note here that we are referring to the initial dataset as the original dataset with only the years 2018, 2019, 2020, 2021. Sine there were many null string values in the dataset we converted them to NA before calculating the percentage of missing values in each column.</p>
+<pre><code>##                 YearStart                   YearEnd              LocationAbbr 
+##                 0.0000000                 0.0000000                 0.0000000 
+##              LocationDesc                DataSource                     Topic 
+##                 0.0000000                 0.0000000                 0.0000000 
+##                  Question                  Response             DataValueUnit 
+##                 0.0000000               100.0000000                 5.6512846 
+##             DataValueType                 DataValue              DataValueAlt 
+##                 0.0000000                32.5825449                32.8883200 
+##   DataValueFootnoteSymbol         DatavalueFootnote        LowConfidenceLimit 
+##                66.4704987                66.4704987                39.1536242 
+##       HighConfidenceLimit   StratificationCategory1           Stratification1 
+##                39.1536242                 0.0000000                 0.0000000 
+##   StratificationCategory2           Stratification2   StratificationCategory3 
+##               100.0000000               100.0000000               100.0000000 
+##           Stratification3               GeoLocation                ResponseID 
+##               100.0000000                 0.6938586               100.0000000 
+##                LocationID                   TopicID                QuestionID 
+##                 0.0000000                 0.0000000                 0.0000000 
+##           DataValueTypeID StratificationCategoryID1         StratificationID1 
+##                 0.0000000                 0.0000000                 0.0000000 
+## StratificationCategoryID2         StratificationID2 StratificationCategoryID3 
+##               100.0000000               100.0000000               100.0000000 
+##         StratificationID3 
+##               100.0000000</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>From the above, we can observe that we have missing values in the following columns: </br>
+Response, DataValueUnit, DataValue, DataValueAlt, DataValueFootnoteSymbol, DatavalueFootnote, LowConfidenceLimit, HighConfidenceLimit, StratificationCategory2, Stratification2, StratificationCategory3, Stratification3, GeoLocation, ResponseID, StratificationCategoryID2, StratificationID2, StratificationCategoryID3, StratificationID3.</p>
+<p>For the purpose of the further analysis we straightaway dropped columns like - </br>
+Response, StratificationCategory2, Stratification2, StratificationCategory3, Stratification3, ResponseID, StratificationCategoryID2, StratificationID2, StratificationCategoryID3, StratificationID3. We did so as they had 100% of the values missing so keeping them would only add more noise to our plots as they serve no useful meaning.
+</br>
+In addition to the above, we also dropped the colummns: DataValueFootnoteSymbol, DatavalueFootnote as these columns have significant (~66%) number of missing values and served no useful purpose for our analysis.</p>
+<p></br>
+Now we recalculate the number of missing values in each column to get an idea of what we have after the above transformations.</p>
+<pre><code>##                         X                 YearStart                   YearEnd 
+##                         0                         0                         0 
+##              LocationAbbr              LocationDesc                DataSource 
+##                         0                         0                         0 
+##                     Topic                  Question             DataValueUnit 
+##                         0                         0                    139390 
+##             DataValueType                 DataValue              DataValueAlt 
+##                         0                    353093                    355136 
+##        LowConfidenceLimit       HighConfidenceLimit   StratificationCategory1 
+##                    465077                    465077                         0 
+##           Stratification1               GeoLocation                LocationID 
+##                         0                      9196                         0 
+##                   TopicID                QuestionID           DataValueTypeID 
+##                         0                         0                         0 
+## StratificationCategoryID1         StratificationID1 
+##                         0                         0</code></pre>
+<p>To get a better idea about the distribution of the missing values, we plot several types of graphs. This also help us understand patterns between different missing values, if any.
+We begin with plotting a vertical bar chart
+<img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations.
+<img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+The above graph gives a more different view to visualize the distribution of missing values. The Variable on the X-axis are the columns. We have one plot where we get an idea of the number of rows missing in each column. Then we have another plot which is giving us a pattern of the missing values in each column. The third plot gives us a more clear picture regarding the association of missing values with the row count.</p>
+<p>We calculated the percentage of missing values in the beginning but we did not do so after dropping the columns so to get a better idea of the percentage of missing values, we plot a horizontal bar chart.</p>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>As expected, the above horizontal bar chart is consistent with the first bar chart that we made. The only difference here is that we have taken the percentage instead of the number of missing values. In addition to that, the above plot is much more visually appealing and is arranged in ascending order to enable visual comparative analysis easily.</p>
+<p>So far, we had primarily been focussing on the columns. Therefore we now dive into the row level aspects. So now let is visualize the missing values in another way by plotting each row in the dataset to get further insights.<br />
+<img src="finalproj_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+The above visualization affirms that the LowConfidenceLimit and HighConfidenceLimit are indeed correlated. In fact they are most likely the same because the rows that have missing LowConfidenceLimit also have missing HighConfidenceLimit and vice versa. A similar conclusion can be made for DataValue and DataValueAlt. GeoLocation has been consistent in the sense that it has very few missing values.</p>
+<p>Since the above plots did not really take other columns (columns without missing values) into consideration, it can be difficult to gauge the relativity between columns that do not have missing values and the columns that have missing values.
+Therefore, the below plot shows all the columns. The bars filled with blue indicates the one’s having missing values therefore they are indicated as True. False indicates that the region does not have missing values. Variables represent the columns</p>
+<pre><code>## # A tibble: 5,588,747 × 2
+##    variables     missing
+##    &lt;chr&gt;         &lt;lgl&gt;  
+##  1 X             FALSE  
+##  2 YearStart     FALSE  
+##  3 YearEnd       FALSE  
+##  4 LocationAbbr  FALSE  
+##  5 LocationDesc  FALSE  
+##  6 DataSource    FALSE  
+##  7 Topic         FALSE  
+##  8 Question      FALSE  
+##  9 DataValueUnit TRUE   
+## 10 DataValueType FALSE  
+## # … with 5,588,737 more rows</code></pre>
+<pre><code>## # A tibble: 29 × 3
+##    variables       missing      n
+##    &lt;chr&gt;           &lt;lgl&gt;    &lt;int&gt;
+##  1 DataSource      FALSE   242989
+##  2 DataValue       FALSE   163817
+##  3 DataValue       TRUE     79172
+##  4 DataValueAlt    FALSE   163074
+##  5 DataValueAlt    TRUE     79915
+##  6 DataValueType   FALSE   242989
+##  7 DataValueTypeID FALSE   242989
+##  8 DataValueUnit   FALSE   229257
+##  9 DataValueUnit   TRUE     13732
+## 10 GeoLocation     FALSE   241303
+## # … with 19 more rows</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
-<div id="missing-value-analysis" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> Missing value analysis<a href="data.html#missing-value-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="cleaning-transformation" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Cleaning / transformation<a href="data.html#cleaning-transformation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Based on the analysis from the plots above, we will be dropping 16 features (mentioned above) that have missing values since it makes more sense than imputing those columns.</p>
+<pre><code>## &#39;data.frame&#39;:    1082328 obs. of  18 variables:
+##  $ YearStart                : int  2010 2017 2018 2011 2012 2015 2018 2010 2014 2016 ...
+##  $ YearEnd                  : int  2010 2017 2018 2011 2012 2015 2018 2010 2014 2016 ...
+##  $ LocationAbbr             : chr  &quot;AK&quot; &quot;AK&quot; &quot;AK&quot; &quot;AK&quot; ...
+##  $ LocationDesc             : chr  &quot;Alaska&quot; &quot;Alaska&quot; &quot;Alaska&quot; &quot;Alaska&quot; ...
+##  $ DataSource               : chr  &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; ...
+##  $ Topic                    : chr  &quot;Alcohol&quot; &quot;Alcohol&quot; &quot;Alcohol&quot; &quot;Chronic Kidney Disease&quot; ...
+##  $ Question                 : chr  &quot;Chronic liver disease mortality&quot; &quot;Chronic liver disease mortality&quot; &quot;Chronic liver disease mortality&quot; &quot;Mortality with end-stage renal disease&quot; ...
+##  $ DataValueType            : chr  &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; ...
+##  $ DataValue                : chr  &quot;70&quot; &quot;121&quot; &quot;121&quot; &quot;221&quot; ...
+##  $ StratificationCategory1  : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Overall&quot; &quot;Race/Ethnicity&quot; ...
+##  $ Stratification1          : chr  &quot;Overall&quot; &quot;Overall&quot; &quot;Overall&quot; &quot;White, non-Hispanic&quot; ...
+##  $ GeoLocation              : chr  &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-147.72205903599973 64.84507995700051)&quot; ...
+##  $ LocationID               : int  2 2 2 2 2 2 2 2 2 2 ...
+##  $ TopicID                  : chr  &quot;ALC&quot; &quot;ALC&quot; &quot;ALC&quot; &quot;CKD&quot; ...
+##  $ QuestionID               : chr  &quot;ALC6_0&quot; &quot;ALC6_0&quot; &quot;ALC6_0&quot; &quot;CKD1_0&quot; ...
+##  $ DataValueTypeID          : chr  &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; ...
+##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;OVERALL&quot; &quot;OVERALL&quot; &quot;RACE&quot; ...
+##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;OVR&quot; &quot;OVR&quot; &quot;WHT&quot; ...</code></pre>
+<p>To be more specific on a period of data, we will be trimming the dataset down to the “Pre-During COVID” period i,e 2018 - 2020 to estimate the effect of chronic diseases on the individuals.</p>
+<p>Since there are many categories in the Data Value type, we will extract entries related to “Number” that give us the population count.</p>
+<pre><code>```
+## &#39;data.frame&#39;:    18928 obs. of  18 variables:
+##  $ YearStart                : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ YearEnd                  : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ LocationAbbr             : chr  &quot;AK&quot; &quot;AL&quot; &quot;AR&quot; &quot;AZ&quot; ...
+##  $ LocationDesc             : chr  &quot;Alaska&quot; &quot;Alabama&quot; &quot;Arkansas&quot; &quot;Arizona&quot; ...
+##  $ DataSource               : chr  &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; ...
+##  $ Topic                    : chr  &quot;Alcohol&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; ...
+##  $ Question                 : chr  &quot;Chronic liver disease mortality&quot; &quot;Mortality from coronary heart disease&quot; &quot;Mortality from coronary heart disease&quot; &quot;Mortality from total cardiovascular diseases&quot; ...
+##  $ DataValueType            : chr  &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; ...
+##  $ DataValue                : num  121 3056 2022 260 1576 ...
+##  $ StratificationCategory1  : chr  &quot;Overall&quot; &quot;Gender&quot; &quot;Gender&quot; &quot;Race/Ethnicity&quot; ...
+##  $ Stratification1          : chr  &quot;Overall&quot; &quot;Male&quot; &quot;Female&quot; &quot;Asian or Pacific Islander&quot; ...
+##  $ GeoLocation              : chr  &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-86.63186076199969 32.84057112200048)&quot; &quot;POINT (-92.27449074299966 34.74865012400045)&quot; &quot;POINT (-111.76381127699972 34.865970280000454)&quot; ...
+##  $ LocationID               : int  2 1 5 4 4 6 9 9 11 11 ...
+##  $ TopicID                  : chr  &quot;ALC&quot; &quot;CVD&quot; &quot;CVD&quot; &quot;CVD&quot; ...
+##  $ QuestionID               : chr  &quot;ALC6_0&quot; &quot;CVD1_3&quot; &quot;CVD1_3&quot; &quot;CVD1_1&quot; ...
+##  $ DataValueTypeID          : chr  &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; ...
+##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;GENDER&quot; &quot;GENDER&quot; &quot;RACE&quot; ...
+##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;GENM&quot; &quot;GENF&quot; &quot;API&quot; ...
+```</code></pre>
+<p>There are 8 data sources contributing to the collection of chronic data after pre-processing the data,(intially there were 26 contributors).</p>
+<pre><code>```
+## [1] 8
+```
+
+&lt;img src=&quot;finalproj_files/figure-html/unnamed-chunk-19-1.png&quot; width=&quot;672&quot; /&gt;</code></pre>
+<p>From the plot, it is clear that “NVSS” has most contributions, we will be using the data only from that source for our analysis.</p>
+<pre><code>```
+## [1] 10540    18
+```
+
+```
+## &#39;data.frame&#39;:    10540 obs. of  18 variables:
+##  $ YearStart                : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ YearEnd                  : int  2018 2018 2018 2018 2018 2018 2018 2018 2018 2018 ...
+##  $ LocationAbbr             : chr  &quot;AK&quot; &quot;AL&quot; &quot;AR&quot; &quot;AZ&quot; ...
+##  $ LocationDesc             : chr  &quot;Alaska&quot; &quot;Alabama&quot; &quot;Arkansas&quot; &quot;Arizona&quot; ...
+##  $ DataSource               : chr  &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; &quot;NVSS&quot; ...
+##  $ Topic                    : chr  &quot;Alcohol&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; &quot;Cardiovascular Disease&quot; ...
+##  $ Question                 : chr  &quot;Chronic liver disease mortality&quot; &quot;Mortality from coronary heart disease&quot; &quot;Mortality from coronary heart disease&quot; &quot;Mortality from total cardiovascular diseases&quot; ...
+##  $ DataValueType            : chr  &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; &quot;Number&quot; ...
+##  $ DataValue                : num  121 3056 2022 260 1576 ...
+##  $ StratificationCategory1  : chr  &quot;Overall&quot; &quot;Gender&quot; &quot;Gender&quot; &quot;Race/Ethnicity&quot; ...
+##  $ Stratification1          : chr  &quot;Overall&quot; &quot;Male&quot; &quot;Female&quot; &quot;Asian or Pacific Islander&quot; ...
+##  $ GeoLocation              : chr  &quot;POINT (-147.72205903599973 64.84507995700051)&quot; &quot;POINT (-86.63186076199969 32.84057112200048)&quot; &quot;POINT (-92.27449074299966 34.74865012400045)&quot; &quot;POINT (-111.76381127699972 34.865970280000454)&quot; ...
+##  $ LocationID               : int  2 1 5 4 4 6 9 9 11 11 ...
+##  $ TopicID                  : chr  &quot;ALC&quot; &quot;CVD&quot; &quot;CVD&quot; &quot;CVD&quot; ...
+##  $ QuestionID               : chr  &quot;ALC6_0&quot; &quot;CVD1_3&quot; &quot;CVD1_3&quot; &quot;CVD1_1&quot; ...
+##  $ DataValueTypeID          : chr  &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; &quot;NMBR&quot; ...
+##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;GENDER&quot; &quot;GENDER&quot; &quot;RACE&quot; ...
+##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;GENM&quot; &quot;GENF&quot; &quot;API&quot; ...
+```</code></pre>
+<p>The updated data after cleaning and considering the optimal attributes has 10540 entries and 18 attributes that constitutes our primary 8 featurese along with 10 supporting features for analysis.</p>
+
 </div>
 </div>
             </section>
@@ -131,7 +376,7 @@
         </div>
       </div>
 <a href="proposal.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

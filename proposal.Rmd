@@ -3,34 +3,37 @@
 ## Research topic
 
 Although the data is readily available it is still not possible to infer insights and trends from this data by just looking at it. To make it useful and discernable for the public, we have decided to perform a thorough exploratory data analysis through interactive visualizations thus enabling us to infer valuable insights/information from the data available to us. 
-The columns we are planning to use are 
+
+The columns we are planning to use are </br>
+
 YearStart (Year Start) / YearEnd (Year End) - Intend to merge these 2 columns to make a single column named “Year” as the values of YearStart and YearEnd is the same in every row
+</br>
 LocationAbbr (Location Abbreviation) - Short form abbreviations of the locations. Useful for neat plots
+</br>
 LocationDec (Location description) - full forms of Location Abbreviations column
+</br>
 Data Source - Source from which the particular data point is collected 
-Topic
+</br>
+Topic - Name of the disease
+</br>
 stratification Category1 -  consisting of race, ethnicity, overall categories 
+</br>
 Stratification1 - The respective values of stratification Category1 column is contained in this column 
-GeoLocation: The geographic Location of the particular data point. Useful for Geospatial Analysis 
+</br>
+GeoLocation - The geographic Location of the particular data point. Useful for Geospatial Analysis 
 
 
-Insights that can be potentially inferred or questions that we can potentially answer through this analysis:
+<b>Insights that can be potentially inferred or questions that we can potentially answer through analyzing the data:</b>
 
 Q - Spread of topic based on the geospatial data and location. can be done for every year to understand which locations are susceptible or improving with respect to a particular topic in each year.
 
 Q - Which gender is more prone to get affected by a specific topic? 
 
-Q - How are the genders getting affected by a specific topic through the progression of time?
-
 Q - patterns between year/time and topic (highest, lowest, etc).
 
-Q - Pattern between race/ethnicity and topics.
+Q - Are there states where males/females getting affected more? 
 
-Q - Patterns between race/ethnicity and geolocation and relating it to topic. 
-
-Q - Are there countries where males/females getting affected more
-
-Q - Countries which are dealing with the most number of topics. Can try to infer which countries are more suitable to live because of less number of topics that they are dealing with?
+Q - States which are dealing with the most number of topics. Can try to infer which countries are more suitable to live because of less number of topics that they are dealing with?
 
 
 ## Data availability

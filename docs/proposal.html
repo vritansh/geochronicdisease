@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Proposal | Geospatial Analysis of Chronic Diseases</title>
   <meta name="description" content="Chapter 2 Proposal | Geospatial Analysis of Chronic Diseases" />
-  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Proposal | Geospatial Analysis of Chronic Diseases" />
   <meta property="og:type" content="book" />
@@ -20,10 +20,10 @@
   
   
 
-<meta name="author" content="Ritvik Khandelwal, Vritansh Kamal, Maria Pratyusha" />
+<meta name="author" content="Vritansh Kamal (vk2501), Ritvik Khandelwal (rk3213), Maria Pratyusha (mp4145)" />
 
 
-<meta name="date" content="2022-11-01" />
+<meta name="date" content="2022-12-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -82,12 +82,24 @@
 <li class="chapter" data-level="3" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>3</b> Data</a>
 <ul>
 <li class="chapter" data-level="3.1" data-path="data.html"><a href="data.html#sources"><i class="fa fa-check"></i><b>3.1</b> Sources</a></li>
-<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.2</b> Cleaning / transformation</a></li>
-<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.3</b> Missing value analysis</a></li>
+<li class="chapter" data-level="3.2" data-path="data.html"><a href="data.html#missing-value-analysis"><i class="fa fa-check"></i><b>3.2</b> Missing value analysis</a></li>
+<li class="chapter" data-level="3.3" data-path="data.html"><a href="data.html#cleaning-transformation"><i class="fa fa-check"></i><b>3.3</b> Cleaning / transformation</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#topic-distribution"><i class="fa fa-check"></i><b>4.1</b> Topic Distribution</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#gender-distribution"><i class="fa fa-check"></i><b>4.2</b> Gender Distribution</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#graph-showing-the-top-cardiovascular-diseases"><i class="fa fa-check"></i><b>4.3</b> Graph Showing the Top Cardiovascular Diseases</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="results.html"><a href="results.html#geomap-mortality-due-to-cardiovascular-diseases"><i class="fa fa-check"></i><b>4.3.1</b> Geomap : Mortality due to Cardiovascular Diseases</a></li>
+<li class="chapter" data-level="4.3.2" data-path="results.html"><a href="results.html#geomap-mortality-due-to-chronic-obstructive-pulmonary-disease"><i class="fa fa-check"></i><b>4.3.2</b> Geomap : Mortality due to Chronic Obstructive Pulmonary Disease</a></li>
+<li class="chapter" data-level="4.3.3" data-path="results.html"><a href="results.html#geomap-mortality-due-to-diabetes"><i class="fa fa-check"></i><b>4.3.3</b> Geomap : Mortality due to Diabetes</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="results.html"><a href="results.html#timeseries-faceted-geoplot"><i class="fa fa-check"></i><b>4.4</b> Timeseries Faceted Geoplot</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
-<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
+<li class="chapter" data-level="6" data-path="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><a href="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><i class="fa fa-check"></i><b>6</b> Interactive graph showing mortality due to chronic disases from years 2018-2021.</a></li>
+<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -111,25 +123,29 @@
 <h1><span class="header-section-number">Chapter 2</span> Proposal<a href="proposal.html#proposal" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="research-topic" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Research topic<a href="proposal.html#research-topic" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Although the data is readily available it is still not possible to infer insights and trends from this data by just looking at it. To make it useful and discernable for the public, we have decided to perform a thorough exploratory data analysis through interactive visualizations thus enabling us to infer valuable insights/information from the data available to us.
-The columns we are planning to use are
-YearStart (Year Start) / YearEnd (Year End) - Intend to merge these 2 columns to make a single column named “Year” as the values of YearStart and YearEnd is the same in every row
+<p>Although the data is readily available it is still not possible to infer insights and trends from this data by just looking at it. To make it useful and discernable for the public, we have decided to perform a thorough exploratory data analysis through interactive visualizations thus enabling us to infer valuable insights/information from the data available to us.</p>
+<p>The columns we are planning to use are </br></p>
+<p>YearStart (Year Start) / YearEnd (Year End) - Intend to merge these 2 columns to make a single column named “Year” as the values of YearStart and YearEnd is the same in every row
+</br>
 LocationAbbr (Location Abbreviation) - Short form abbreviations of the locations. Useful for neat plots
+</br>
 LocationDec (Location description) - full forms of Location Abbreviations column
+</br>
 Data Source - Source from which the particular data point is collected
-Topic
+</br>
+Topic - Name of the disease
+</br>
 stratification Category1 - consisting of race, ethnicity, overall categories
+</br>
 Stratification1 - The respective values of stratification Category1 column is contained in this column
-GeoLocation: The geographic Location of the particular data point. Useful for Geospatial Analysis</p>
-<p>Insights that can be potentially inferred or questions that we can potentially answer through this analysis:</p>
+</br>
+GeoLocation - The geographic Location of the particular data point. Useful for Geospatial Analysis</p>
+<p><b>Insights that can be potentially inferred or questions that we can potentially answer through analyzing the data:</b></p>
 <p>Q - Spread of topic based on the geospatial data and location. can be done for every year to understand which locations are susceptible or improving with respect to a particular topic in each year.</p>
 <p>Q - Which gender is more prone to get affected by a specific topic?</p>
-<p>Q - How are the genders getting affected by a specific topic through the progression of time?</p>
 <p>Q - patterns between year/time and topic (highest, lowest, etc).</p>
-<p>Q - Pattern between race/ethnicity and topics.</p>
-<p>Q - Patterns between race/ethnicity and geolocation and relating it to topic.</p>
-<p>Q - Are there countries where males/females getting affected more</p>
-<p>Q - Countries which are dealing with the most number of topics. Can try to infer which countries are more suitable to live because of less number of topics that they are dealing with?</p>
+<p>Q - Are there states where males/females getting affected more?</p>
+<p>Q - States which are dealing with the most number of topics. Can try to infer which countries are more suitable to live because of less number of topics that they are dealing with?</p>
 </div>
 <div id="data-availability" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Data availability<a href="proposal.html#data-availability" class="anchor-section" aria-label="Anchor link to header"></a></h2>
