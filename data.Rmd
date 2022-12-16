@@ -14,12 +14,13 @@ library(tibble)
 library(choroplethr)
 library(tidyverse)
 library(mapview)
+library(redav)
 ```
 
 It contains 1082328 entries, where there are 34 attributes contributing to the observance of the chronic disease in the United States of America.
 
-    ```{r}
-    data <- read.csv("ChronicDiseases.csv")
+```{r}
+    data <- read.csv("/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv")
     dim(data)
     ```
 
@@ -110,7 +111,8 @@ Now we recalculate the number of missing values in each column to get an idea of
 
 ```{r}
 
-data2 = read.csv(file = 'CDC.csv') 
+#Add missing data
+data2 = read.csv(file = '/Users/vritansh/Downloads/CDC.csv') 
 
 df <- data2[data2$YearStart %in% c('2018', '2019', '2020','2021'), ]
 
@@ -122,7 +124,7 @@ tidydf <- df %>%
   gather(key, value, -id) %>% 
   mutate(missing = ifelse(is.na(value), "yes", "no"))
 
-dat2 <- read.csv("CDC.csv", header=T, na.strings=c("","NA"))
+dat2 <- read.csv("/Users/vritansh/Downloads/CDC.csv", header=T, na.strings=c("","NA"))
 sapply(dat2, function(x) sum(is.na(x)))
 df <- dat2[dat2$YearStart %in% c('2018', '2019', '2020','2021'), ]
 missing.values <- df %>%
@@ -142,14 +144,30 @@ ggplot() + geom_bar(data = missing.values, aes(x=key, y=num.missing), stat = 'id
 ```
 From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations. 
 ```{r}
+
+dat2 <- read.csv("/Users/vritansh/Downloads/CDC.csv", header=T, na.strings=c("","NA"))
+sapply(dat2, function(x) sum(is.na(x)))
+df <- dat2[dat2$YearStart %in% c('2018', '2019', '2020','2021'), ]
+missing.values <- df %>%
+  gather(key = "key", value = "val") %>%
+  mutate(is.missing = is.na(val)) %>%
+  group_by(key, is.missing) %>%
+  summarise(num.missing = n()) %>%
+  filter(is.missing==T) %>%
+  select(-is.missing) %>%
+  arrange(desc(num.missing)) 
+
 library(redav)
+colnames(df) <- c('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W')
 plot_missing(df, percent = FALSE)
+
 ```
 The above graph gives a more different view to visualize the distribution of missing values. The Variable on the X-axis are the columns. We have one plot where we get an idea of the number of rows missing in each column. Then we have another plot which is giving us a pattern of the missing values in each column. The third plot gives us a more clear picture regarding the association of missing values with the row count. 
 
 We calculated the percentage of missing values in the beginning but we did not do so after dropping the columns so to get a better idea of the percentage of missing values, we plot a horizontal bar chart.
 
 ```{r}
+
 missing.values <- df %>%
   gather(key = "key", value = "val") %>%
   mutate(isna = is.na(val)) %>%
@@ -204,6 +222,8 @@ The above visualization affirms that the LowConfidenceLimit and HighConfidenceLi
 Since the above plots did not really take other columns (columns without missing values) into consideration, it can be difficult to gauge the relativity between columns that do not have missing values and the columns that have missing values. 
 Therefore, the below plot shows all the columns. The bars filled with blue indicates the one's having missing values therefore they are indicated as True. False indicates that the region does not have missing values. Variables represent the columns 
 ```{r}
+
+
 df  %>%
   summarise_all(list(~is.na(.)))%>%
   pivot_longer(everything(),
@@ -259,7 +279,8 @@ There are 8 data sources contributing to the collection of chronic data after pr
     length(unique(data$DataSource))
     ```
 
-    ```{r}
+```{r}
+
     data %>%
       group_by(DataSource) %>%
       summarise(count = n()) %>%
@@ -269,7 +290,8 @@ There are 8 data sources contributing to the collection of chronic data after pr
       coord_flip()+
       xlab("DataSource") + 
       theme(panel.grid.major.x = element_blank()) 
-    ```
+
+```
 
 From the plot, it is clear that "NVSS" has most contributions, we will be using the data only from that source for our analysis. 
 

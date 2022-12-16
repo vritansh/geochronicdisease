@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Data | Geospatial Analysis of Chronic Diseases</title>
   <meta name="description" content="Chapter 3 Data | Geospatial Analysis of Chronic Diseases" />
-  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Data | Geospatial Analysis of Chronic Diseases" />
   <meta property="og:type" content="book" />
@@ -20,7 +20,7 @@
   
   
 
-<meta name="author" content="Vritansh Kamal (vk2501), Maria Pratyusha (mp4145), Ritvik Khandelwal (rk3213)" />
+<meta name="author" content="Vritansh Kamal (vk2501), Ritvik Khandelwal (rk3213), Maria Pratyusha (mp4145)" />
 
 
 <meta name="date" content="2022-12-15" />
@@ -97,9 +97,11 @@
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="results.html"><a href="results.html#timeseries-faceted-geoplot"><i class="fa fa-check"></i><b>4.4</b> Timeseries Faceted Geoplot</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a></li>
-<li class="chapter" data-level="6" data-path="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><a href="interactive-graph-showing-mortality-due-to-chronic-disases-from-years-2018-2021..html"><i class="fa fa-check"></i><b>6</b> Interactive graph showing mortality due to chronic disases from years 2018-2021.</a></li>
-<li class="chapter" data-level="7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>7</b> Conclusion</a></li>
+<li class="chapter" data-level="5" data-path="interactive-component.html"><a href="interactive-component.html"><i class="fa fa-check"></i><b>5</b> Interactive component</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="interactive-component.html"><a href="interactive-component.html#exploring-hierarchies-click-on-bars-to-explore"><i class="fa fa-check"></i><b>5.1</b> Exploring Hierarchies ( Click on bars to explore )</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>6</b> Conclusion</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -126,9 +128,7 @@
 <p>The dataset used in this project is borrowed from the division of population health in <b>Center for Disease Control and Prevention (CDC)</b> - (<a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi" class="uri">https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi</a>).
 The dataset was created on 10th November 2020 and was last modified on 21st April 2022.</p>
 <p>It contains 1082328 entries, where there are 34 attributes contributing to the observance of the chronic disease in the United States of America.</p>
-<pre><code>```
-## [1] 1082328      34
-```</code></pre>
+<pre><code>## [1] 1082328      34</code></pre>
 <p>Let’s have a look at the structure of the dataset in order to comprehend the varied traits that help define the data.</p>
 <pre><code>## &#39;data.frame&#39;:    1082328 obs. of  34 variables:
 ##  $ YearStart                : int  2010 2017 2018 2011 2012 2015 2018 2010 2014 2016 ...
@@ -248,8 +248,24 @@ Now we recalculate the number of missing values in each column to get an idea of
 <p>To get a better idea about the distribution of the missing values, we plot several types of graphs. This also help us understand patterns between different missing values, if any.
 We begin with plotting a vertical bar chart
 <img src="finalproj_files/figure-html/unnamed-chunk-9-1.png" width="672" />
-From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations.
-<img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations.</p>
+<pre><code>##                         X                 YearStart                   YearEnd 
+##                         0                         0                         0 
+##              LocationAbbr              LocationDesc                DataSource 
+##                         0                         0                         0 
+##                     Topic                  Question             DataValueUnit 
+##                         0                         0                    139390 
+##             DataValueType                 DataValue              DataValueAlt 
+##                         0                    353093                    355136 
+##        LowConfidenceLimit       HighConfidenceLimit   StratificationCategory1 
+##                    465077                    465077                         0 
+##           Stratification1               GeoLocation                LocationID 
+##                         0                      9196                         0 
+##                   TopicID                QuestionID           DataValueTypeID 
+##                         0                         0                         0 
+## StratificationCategoryID1         StratificationID1 
+##                         0                         0</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 The above graph gives a more different view to visualize the distribution of missing values. The Variable on the X-axis are the columns. We have one plot where we get an idea of the number of rows missing in each column. Then we have another plot which is giving us a pattern of the missing values in each column. The third plot gives us a more clear picture regarding the association of missing values with the row count.</p>
 <p>We calculated the percentage of missing values in the beginning but we did not do so after dropping the columns so to get a better idea of the percentage of missing values, we plot a horizontal bar chart.</p>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
@@ -260,32 +276,32 @@ The above visualization affirms that the LowConfidenceLimit and HighConfidenceLi
 <p>Since the above plots did not really take other columns (columns without missing values) into consideration, it can be difficult to gauge the relativity between columns that do not have missing values and the columns that have missing values.
 Therefore, the below plot shows all the columns. The bars filled with blue indicates the one’s having missing values therefore they are indicated as True. False indicates that the region does not have missing values. Variables represent the columns</p>
 <pre><code>## # A tibble: 5,588,747 × 2
-##    variables     missing
-##    &lt;chr&gt;         &lt;lgl&gt;  
-##  1 X             FALSE  
-##  2 YearStart     FALSE  
-##  3 YearEnd       FALSE  
-##  4 LocationAbbr  FALSE  
-##  5 LocationDesc  FALSE  
-##  6 DataSource    FALSE  
-##  7 Topic         FALSE  
-##  8 Question      FALSE  
-##  9 DataValueUnit TRUE   
-## 10 DataValueType FALSE  
+##    variables missing
+##    &lt;chr&gt;     &lt;lgl&gt;  
+##  1 A         FALSE  
+##  2 B         FALSE  
+##  3 C         FALSE  
+##  4 D         FALSE  
+##  5 E         FALSE  
+##  6 F         FALSE  
+##  7 G         FALSE  
+##  8 H         FALSE  
+##  9 I         TRUE   
+## 10 J         FALSE  
 ## # … with 5,588,737 more rows</code></pre>
 <pre><code>## # A tibble: 29 × 3
-##    variables       missing      n
-##    &lt;chr&gt;           &lt;lgl&gt;    &lt;int&gt;
-##  1 DataSource      FALSE   242989
-##  2 DataValue       FALSE   163817
-##  3 DataValue       TRUE     79172
-##  4 DataValueAlt    FALSE   163074
-##  5 DataValueAlt    TRUE     79915
-##  6 DataValueType   FALSE   242989
-##  7 DataValueTypeID FALSE   242989
-##  8 DataValueUnit   FALSE   229257
-##  9 DataValueUnit   TRUE     13732
-## 10 GeoLocation     FALSE   241303
+##    variables missing      n
+##    &lt;chr&gt;     &lt;lgl&gt;    &lt;int&gt;
+##  1 A         FALSE   242989
+##  2 B         FALSE   242989
+##  3 C         FALSE   242989
+##  4 D         FALSE   242989
+##  5 E         FALSE   242989
+##  6 F         FALSE   242989
+##  7 G         FALSE   242989
+##  8 H         FALSE   242989
+##  9 I         FALSE   229257
+## 10 I         TRUE     13732
 ## # … with 19 more rows</code></pre>
 <p><img src="finalproj_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
@@ -337,9 +353,8 @@ Therefore, the below plot shows all the columns. The bars filled with blue indic
 <p>There are 8 data sources contributing to the collection of chronic data after pre-processing the data,(intially there were 26 contributors).</p>
 <pre><code>```
 ## [1] 8
-```
-
-&lt;img src=&quot;finalproj_files/figure-html/unnamed-chunk-19-1.png&quot; width=&quot;672&quot; /&gt;</code></pre>
+```</code></pre>
+<p><img src="finalproj_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>From the plot, it is clear that “NVSS” has most contributions, we will be using the data only from that source for our analysis.</p>
 <pre><code>```
 ## [1] 10540    18
@@ -366,7 +381,7 @@ Therefore, the below plot shows all the columns. The bars filled with blue indic
 ##  $ StratificationCategoryID1: chr  &quot;OVERALL&quot; &quot;GENDER&quot; &quot;GENDER&quot; &quot;RACE&quot; ...
 ##  $ StratificationID1        : chr  &quot;OVR&quot; &quot;GENM&quot; &quot;GENF&quot; &quot;API&quot; ...
 ```</code></pre>
-<p>The updated data after cleaning and considering the optimal attributes has 10540 entries and 18 attributes that constitutes our primary 8 featurese along with 10 supporting features for analysis.</p>
+<p>The updated data after cleaning and considering the optimal attributes has 10540 entries and 18 attributes that constitutes our primary 8 features along with 10 supporting features for analysis.</p>
 
 </div>
 </div>

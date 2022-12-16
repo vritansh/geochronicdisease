@@ -16,7 +16,7 @@ options(warn=-1)
 
 ```{r}
 #Preprocessing and converting to minifiles that will be used throughout to plot
-data = read.csv('ChronicDiseases.csv')
+data = read.csv('/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv')
 
 ```
 
@@ -258,7 +258,7 @@ df_spread_geo_time$YearEnd <- as.Date(as.character(df_spread_geo_time$YearEnd), 
 #Save the data to a dataset and use later on github pages.
 write.csv(df_spread_geo_time, "eda_geospatial_time.csv", row.names=FALSE)
 }
-data = read.csv('ChronicDiseases.csv')
+data <- read.csv('/Users/vritansh/Documents/Columbia/EDAV/EDAV_FINAL_PROJECT/USChronicDiseases.csv')
 save_geospatial_time(data)
 
 ```
