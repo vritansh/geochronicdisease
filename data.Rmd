@@ -60,6 +60,8 @@ drop <- c("X")
 df5 = df5[,!(names(df5) %in% drop)]
 (colMeans(is.na(df5)))*100
 ```
+
+
 ```{r}
 data1 = data
 
@@ -109,6 +111,7 @@ In addition to the above, we also dropped the colummns: DataValueFootnoteSymbol,
 </br>
 Now we recalculate the number of missing values in each column to get an idea of what we have after the above transformations. 
 
+
 ```{r}
 
 #Add missing data
@@ -137,12 +140,22 @@ missing.values <- df %>%
   arrange(desc(num.missing)) 
 ```
 
+
 To get a better idea about the distribution of the missing values, we plot several types of graphs. This also help us understand patterns between different missing values, if any. 
 We begin with plotting a vertical bar chart 
+
+
+
 ```{r}
+
 ggplot() + geom_bar(data = missing.values, aes(x=key, y=num.missing), stat = 'identity')+labs(x='columns', y="number of missing values", title='Bar Chart of the number of missing values') + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + coord_cartesian(ylim=c(0,100000)) + scale_y_continuous(breaks=seq(0,100000,12500))
+
 ```
+
+
 From the above Bar Chart we can infer that DataValue and DataValueAlt have same number of missing values. Similarly, the columns HighConfidenceLimit and LowConfidenceLimit have equal number of missing values. Perhaps, there is a correlation between them? Before we arrive to this conclusion, let us take look through some more visualizations. 
+
+
 ```{r}
 
 dat2 <- read.csv("/Users/vritansh/Downloads/CDC.csv", header=T, na.strings=c("","NA"))
@@ -162,11 +175,46 @@ colnames(df) <- c('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P
 plot_missing(df, percent = FALSE)
 
 ```
+
+B - Year start
+C - Year end 
+D - Location Abbreviation
+E - location description
+F - Data Source 
+G - Topic 
+H - Question
+I - DataValueUnit 
+J - DataValueType
+K - DataValue
+L - DataValueAlt
+M - LowConfidenceLimit
+N - HighConfidenceLimit
+O - StratificationCategory1 
+P - Stratification1
+Q - Geolocation
+R - LocationID
+S - TopicID
+T - QuestionID
+U - DataValueTypeID
+V - StratificationCategoryID1
+W - StratificationID1
+
 The above graph gives a more different view to visualize the distribution of missing values. The Variable on the X-axis are the columns. We have one plot where we get an idea of the number of rows missing in each column. Then we have another plot which is giving us a pattern of the missing values in each column. The third plot gives us a more clear picture regarding the association of missing values with the row count. 
 
 We calculated the percentage of missing values in the beginning but we did not do so after dropping the columns so to get a better idea of the percentage of missing values, we plot a horizontal bar chart.
 
+
+
 ```{r}
+
+data1 = read.csv(file = '/Users/vritansh/Downloads/CDC.csv') 
+
+df <- data1[data1$YearStart %in% c('2018', '2019', '2020','2021'), ]
+
+df[df == ''] <- NA
+
+drop <- c("X")
+df = df[,!(names(df) %in% drop)]
 
 missing.values <- df %>%
   gather(key = "key", value = "val") %>%
@@ -193,6 +241,7 @@ percentage.plot <- missing.values %>%
              'Variable', y = "% of missing values")
 
 percentage.plot
+
 ```
 
 As expected, the above horizontal bar chart is consistent with the first bar chart that we made. The only difference here is that we have taken the percentage instead of the number of missing values. In addition to that, the above plot is much more visually appealing and is arranged in ascending order to enable visual comparative analysis easily. 
